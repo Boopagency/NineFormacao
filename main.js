@@ -305,6 +305,10 @@ lb.addEventListener("click", (e) => { if (e.target === lb && !lbSwipe) lb.close(
 // Vídeos com data-autoplay tocam só quando visíveis (e nunca com reduced motion)
 const autoplayIO = new IntersectionObserver((es) => es.forEach((e) =>
   e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause()), { threshold: .25 });
+// Vídeo do zoom ("Imagine você aqui."): no começo do efeito ele aparece recortado num quadradinho (uns 2% da área), então o
+// limite de 25% só liberava a reprodução bem depois. Aqui basta chegar perto: começa a tocar antes de a seção entrar.
+const zoomVideoIO = new IntersectionObserver((es) => es.forEach((e) =>
+  e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause()), { rootMargin: "60% 0px 60% 0px" });
 // Capas dos vídeos fora do topo só baixam quando chegam perto da tela (não disputam banda com o primeiro conteúdo)
 // A capa também vira fundo do <video>: o navegador esconde o poster assim que o play() começa, antes do primeiro quadro
 // chegar, e sem isso o cartão ficava em branco até o vídeo aparecer.
@@ -318,7 +322,7 @@ document.querySelectorAll("video[data-poster]").forEach((v) => posterIO.observe(
 document.querySelectorAll("video[poster]").forEach((v) => setCapa(v, v.getAttribute("poster")));
 
 // Vídeos só começam depois da página pronta. No celular (rede mais lenta), o do topo espera o primeiro toque ou rolagem.
-const startVideos = () => document.querySelectorAll("[data-autoplay]").forEach((v) => autoplayIO.observe(v));
+const startVideos = () => document.querySelectorAll("[data-autoplay]").forEach((v) => (v.hasAttribute("data-zoom-video") ? zoomVideoIO : autoplayIO).observe(v));
 if (!reduceMotion.matches) afterLoad(() => {
   if (matchMedia("(min-width: 768px)").matches) return startVideos();
   const go = () => { ["pointerdown", "scroll", "keydown"].forEach((t) => removeEventListener(t, go)); startVideos(); };
