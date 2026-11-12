@@ -510,8 +510,9 @@ video { background-color: var(--navy); background-size: cover; background-positi
 .footer a { text-decoration: none; color: rgba(255, 255, 255, .85); }
 .footer a:hover { color: #fff; text-decoration: underline; }
 .footer__copy { margin-top: 64px; font-size: .875rem; color: rgba(255, 255, 255, .6); }
-.footer__wm { display: flex; justify-content: center; margin-top: 64px; color: #fff; margin-bottom: calc(min(88vw, 1100px) * -.13); }
-.footer__wm svg { width: min(88vw, 1100px); height: auto; }
+.footer__wm { display: flex; justify-content: center; margin: 72px 0 0; padding-bottom: clamp(48px, 7vw, 96px); color: #fff; }
+.footer__wm svg { width: clamp(240px, 46vw, 620px); height: auto; }
+@media (max-width: 767px) { .footer__wm svg { width: min(72vw, 320px); } }
 @media (max-width: 767px) {
   .footer__cols { grid-template-columns: 1fr 1fr; }
 }
