@@ -2,15 +2,15 @@
    Tudo que é comportamento da página está aqui. As bibliotecas de animação (GSAP, Lenis)
    só entram depois do carregamento; sem elas o site continua completo. */
 
-// ---------- Configuração ----------
-// Destino do formulário: URL que recebe POST em JSON (webhook de planilha, n8n, Make…).
-// Enquanto estiver vazio, o envio abre o e-mail do visitante com a mensagem pronta para FORM_EMAIL.
-const FORM_ENDPOINT = "";
-const FORM_EMAIL = "contato@9ai.com.br";
-
 // Acervo do mural. Para trocar conteúdo: coloque os arquivos em assets/img/galeria/
 // (<id>-320.webp, <id>-600.webp e <id>.webp ampliada) e edite esta lista. A ordem é a de exibição.
 const GALERIA = [
+  { id: "d-seumundo3", cat: "aulas", legenda: "Intensivo Seu Mundo", alt: "Professor explicando para a turma no intensivo Seu Mundo", w: 1600, h: 1067 },
+  { id: "d-pintura", cat: "oficinas", legenda: "Aula de pintura ao ar livre", alt: "Professor de avental dando aula de pintura ao ar livre, com a turma sentada ao redor", w: 1067, h: 1600 },
+  { id: "d-degustacao", cat: "jantares", legenda: "Mundo Sofisticado", alt: "Aluno de camisa preta abrindo uma garrafa de espumante", w: 1067, h: 1600 },
+  { id: "d-hm4", cat: "aulas", legenda: "Mundo da Liderança", alt: "Sala cheia de alunos escrevendo no intensivo Mundo da Liderança", w: 1600, h: 1067 },
+  { id: "d-digital", cat: "oficinas", legenda: "Intensivo Mundo Digital", alt: "Aluno com óculos de realidade virtual sob luz azul", w: 900, h: 1600 },
+  { id: "d-seumundo2", cat: "aulas", legenda: "Intensivo Seu Mundo", alt: "Palestrante diante do quadro e alunos sentados em mesas", w: 1067, h: 1600 },
   { id: "06", cat: "oficinas", legenda: "Oficina de joalheria", alt: "Turma em volta da mesa de ferramentas na oficina de joalheria", w: 600, h: 817 },
   { id: "22", cat: "jantares", legenda: "Jantar da turma", alt: "Dois alunos às gargalhadas durante o jantar", w: 600, h: 398 },
   { id: "24", cat: "aulas", legenda: "Aula no laboratório de ciências", alt: "Turma de jaleco reunida para foto no laboratório", w: 600, h: 438 },
@@ -77,9 +77,6 @@ $("[data-ia-close]").addEventListener("click", () => {
   try { sessionStorage.setItem("nine-ia", "0"); } catch (e) {}
   $(".logo").focus();
 });
-// Links do curso de IA já chegam no formulário com a opção marcada
-$$('[data-interesse="ia"]').forEach((a) => a.addEventListener("click", () => ($("[data-interesse-ia]").checked = true)));
-
 // Menu mobile em tela cheia
 const menu = $("[data-menu]"), burger = $(".nav__burger");
 const setMenu = (open) => {
@@ -304,80 +301,39 @@ const centroIO = new IntersectionObserver((es) => es.forEach((e) => e.isIntersec
 afterLoad(() => (reelsTrack.scrollLeft = reelAtivo.offsetLeft - (reelsTrack.clientWidth - reelAtivo.offsetWidth) / 2));
 reelItems.forEach((li) => centroIO.observe(li));
 
+// Equipe: o card do meio ganha cor e destaque (como na referência); setas e teclado rolam de um em um
+const equipeTrack = $("[data-equipe]");
+if (equipeTrack) {
+  const profs = $$(".prof", equipeTrack);
+  const centroIO = new IntersectionObserver((es) => es.forEach((e) => e.target.classList.toggle("is-center", e.isIntersecting)),
+    { root: equipeTrack, rootMargin: "0px -46% 0px -46%" });
+  profs.forEach((p) => centroIO.observe(p));
+  // abre com um card do meio já centralizado, para não começar com o lado esquerdo vazio
+  const abrirNoMeio = () => {
+    const m = profs[matchMedia("(min-width: 900px)").matches ? 2 : 1];
+    equipeTrack.scrollLeft = m.offsetLeft - (equipeTrack.clientWidth - m.offsetWidth) / 2;
+  };
+  abrirNoMeio();
+  afterLoad(abrirNoMeio);
+  const passo = (d) => equipeTrack.scrollBy({ left: d * (profs[0].offsetWidth + 16), behavior: reduceMotion.matches ? "auto" : "smooth" });
+  $("[data-equipe-prev]").addEventListener("click", () => passo(-1));
+  $("[data-equipe-next]").addEventListener("click", () => passo(1));
+  equipeTrack.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") { e.preventDefault(); passo(1); }
+    if (e.key === "ArrowLeft") { e.preventDefault(); passo(-1); }
+  });
+}
+
 // CTA fixo: aparece depois do topo e some quando o fechamento (Por que Nine + formulário) está na tela
 const ctaFloat = $("[data-cta-float]"), heroCard = $(".hero__card"), fecho = $("#porque");
-const updateCta = () => ctaFloat.classList.toggle("is-on",
-  heroCard.getBoundingClientRect().bottom < 0 && fecho.getBoundingClientRect().top > innerHeight);
+const zoomEl = $(".zoom");
+const updateCta = () => {
+  const z = zoomEl.getBoundingClientRect();
+  const noZoom = z.top <= 1 && z.bottom >= innerHeight - 1; // não cobre o grid enquanto o motion de abertura roda
+  ctaFloat.classList.toggle("is-on", heroCard.getBoundingClientRect().bottom < 0 && fecho.getBoundingClientRect().top > innerHeight && !noZoom);
+};
 addEventListener("scroll", updateCta, { passive: true });
 afterLoad(updateCta);
-
-// ---------- Formulário ----------
-const form = $("[data-form]"), formStatus = $("[data-status]", form), formBtn = $('[type="submit"]', form);
-const whats = $("#f-whats");
-whats.addEventListener("input", () => {
-  const d = whats.value.replace(/\D/g, "").slice(0, 11);
-  whats.value = d.length > 10 ? d.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3")
-    : d.length > 6 ? d.replace(/(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3")
-    : d.length > 2 ? d.replace(/(\d{2})(\d*)/, "($1) $2") : d;
-});
-const mensagemDeErro = (c) => {
-  if (c.id === "f-whats" && c.value.replace(/\D/g, "").length < 10) return "Digite o WhatsApp com DDD.";
-  if (c.validity.valueMissing) return c.type === "checkbox" ? "Marque esta opção para enviar." : "Preencha este campo.";
-  if (c.validity.typeMismatch) return "Digite um e-mail válido.";
-  if (c.validity.rangeUnderflow || c.validity.rangeOverflow || c.validity.badInput) return "Digite uma idade válida.";
-  return "";
-};
-function validar() {
-  let primeiro = null;
-  $$("input[required]", form).forEach((c) => {
-    const msg = mensagemDeErro(c), box = c.closest(".field");
-    let err = $(".field__err", box);
-    c.classList.toggle("is-invalid", !!msg);
-    c.setAttribute("aria-invalid", !!msg);
-    if (msg) {
-      if (!err) { err = document.createElement("p"); err.className = "field__err"; err.id = `${c.id}-erro`; box.append(err); c.setAttribute("aria-describedby", err.id); }
-      err.textContent = msg;
-      primeiro ??= c;
-    } else if (err) { err.remove(); c.removeAttribute("aria-describedby"); }
-  });
-  return primeiro;
-}
-form.addEventListener("input", (e) => e.target.classList.contains("is-invalid") && validar());
-function sucesso(titulo, texto) {
-  const done = $("[data-done]", form);
-  if (titulo) $("h3", done).textContent = titulo;
-  if (texto) $("[data-done-text]", done).textContent = texto;
-  done.hidden = false;
-  form.classList.add("is-sent");
-  done.focus();
-  refreshScroll();
-}
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const ruim = validar();
-  if (ruim) { formStatus.textContent = "Confira os campos destacados."; return ruim.focus(); }
-  const dados = Object.fromEntries(new FormData(form));
-  if (dados.website) return sucesso(); // armadilha anti-spam: finge sucesso e não envia
-  delete dados.website;
-  dados.consentimento = true;
-  dados.enviado_em = new Date().toISOString();
-  if (!FORM_ENDPOINT) {
-    const corpo = [`Interesse: ${dados.interesse}`, `Nome: ${dados.nome}`, `WhatsApp: ${dados.whatsapp}`, `E-mail: ${dados.email}`, `Idade: ${dados.idade}`,
-      `Cidade/UF: ${dados.cidade}`, dados.igreja && `Igreja: ${dados.igreja}`, dados.mensagem && `\n${dados.mensagem}`].filter(Boolean).join("\n");
-    location.href = `mailto:${FORM_EMAIL}?subject=${encodeURIComponent(`Site da Nine: ${dados.interesse}`)}&body=${encodeURIComponent(corpo)}`;
-    return sucesso("Falta só enviar o e-mail.", `Abrimos o seu aplicativo de e-mail com a mensagem pronta. Se ele não abriu, escreva para ${FORM_EMAIL} ou ligue para (41) 3333-3363.`);
-  }
-  formBtn.disabled = true;
-  formStatus.textContent = "Enviando…";
-  try {
-    const r = await fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(dados) });
-    if (!r.ok) throw new Error(r.status);
-    sucesso();
-  } catch (err) {
-    formBtn.disabled = false;
-    formStatus.innerHTML = `Não conseguimos enviar agora. Tente de novo ou escreva para <a href="mailto:${FORM_EMAIL}">${FORM_EMAIL}</a>.`;
-  }
-});
 
 /* ==========================================================================
    Motion (GSAP + ScrollTrigger + SplitText + Lenis)
@@ -399,6 +355,7 @@ afterLoad(() => loadScript("/assets/vendor/gsap-3.15.0.min.js")
 
 function initMotion() {
   gsap.registerPlugin(ScrollTrigger, SplitText);
+  ScrollTrigger.config({ ignoreMobileResize: true }); // a barra do navegador no celular não refaz o pin
 
   gsap.matchMedia().add({
     motion: "(prefers-reduced-motion: no-preference)",
@@ -417,7 +374,8 @@ function initMotion() {
 
     // Pins primeiro e na ordem da página: o que vem depois já mede a posição com o espaço deles
     const cleanups = [smoothScroll(), heroScroll()];
-    if (desktop) cleanups.push(pinZoom(), pinPilares(), pinAno());
+    cleanups.push(pinZoom());
+    if (desktop) cleanups.push(pinPilares(), pinAno());
     cleanups.push(reveals(free));
     if (desktop && finePointer) cleanups.push(cursor(), magnetic());
     ScrollTrigger.sort();

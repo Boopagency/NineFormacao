@@ -10,10 +10,11 @@ def minifica(css):
     return css.replace(";}", "}").strip()
 
 css = minifica(open("style.css", encoding="utf-8").read())
-html = open("index.html", encoding="utf-8").read()
-html, n = re.subn(r'<style id="css">.*?</style>', lambda m: f'<style id="css">{css}</style>', html, count=1, flags=re.S)
-assert n == 1, "index.html precisa ter <style id=\"css\">"
-assert ' style="' not in html, "sem style= no HTML (regra de acessibilidade do projeto)"
-assert 'target="_blank"' not in html
-open("index.html", "w", encoding="utf-8").write(html)
+for pagina in ("index.html", "pre-inscricao/index.html"):
+    html = open(pagina, encoding="utf-8").read()
+    html, n = re.subn(r'<style id="css">.*?</style>', lambda m: f'<style id="css">{css}</style>', html, count=1, flags=re.S)
+    assert n == 1, f"{pagina} precisa ter <style id=\"css\">"
+    assert ' style="' not in html, "sem style= no HTML (regra de acessibilidade do projeto)"
+    assert 'target="_blank"' not in html
+    open(pagina, "w", encoding="utf-8").write(html)
 print(f"CSS embutido: {len(css) // 1024} KB")

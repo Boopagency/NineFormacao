@@ -8,8 +8,9 @@ Site de uma página da formação da Nine (antes vivia em `/academia/` no reposi
 ## Arquivos
 - `index.html`: a página. Mantida à mão. O CSS fica embutido em `<style id="css">`.
 - `style.css`: fonte do CSS. Depois de editar, rode `python3 build.py` (minifica e embute na página).
-- `main.js`: todo o comportamento. No topo ficam `FORM_ENDPOINT`, `FORM_EMAIL` e a lista `GALERIA` do mural.
-- `assets/img/galeria/` (mural, `<id>-320.webp`, `<id>-600.webp`, `<id>.webp`), `assets/img/curso/` (fotos tiradas da apresentação 2026), `assets/img/pilares/` (colagens), `assets/video/`, `assets/vendor/` (GSAP, ScrollTrigger, SplitText, Lenis).
+- `main.js`: todo o comportamento. No topo fica a lista `GALERIA` do mural.
+- `pre-inscricao/index.html` + `pagina.js`: página com o formulário da Ummense em iframe (mesmo visual, CSS embutido pelo `build.py`). Todos os botões "Quero conhecer" do site levam para `/pre-inscricao/`. O site não tem mais formulário em HTML.
+- `assets/img/galeria/` (mural, `<id>-320.webp`, `<id>-600.webp`, `<id>.webp`), `assets/img/curso/` (fotos do Drive da Nine e recortes da apresentação 2026), `assets/img/pilares/` (colagens), `assets/video/`, `assets/vendor/` (GSAP, ScrollTrigger, SplitText, Lenis), `assets/logo/nine-wordmark.svg` (NINE + coroa, do SVG oficial; no site o logo é o `<symbol id="nine-logo">` do `index.html`, que herda a cor do texto).
 
 - `material/Nine-formacao-pendencias-do-site.pdf` (fonte: `material/pendencias-do-site.html`): documento de pendências com a identidade da Nine, para enviar ao cliente. A lista da seção "Pendências" abaixo é a mesma; ao fechar um item, atualize os dois e gere o PDF de novo com o Chromium (`page.pdf`, `preferCSSPageSize`, `printBackground`).
 
@@ -18,9 +19,9 @@ Site de uma página da formação da Nine (antes vivia em `/academia/` no reposi
 Sem framework e sem build além do `build.py`. Para ver localmente: `python3 -m http.server` na raiz (os caminhos são absolutos).
 
 ## Ordem da página
-Barra do curso de IA → Nav → Hero (frase + CTA dentro do card; lema e ficha abaixo) → Para quem é (manifesto) → O que é a Nine (números) → Vida na Nine (zoom "Imagine você aqui.") → Três pilares (pinado) → Grade completa (abas por pilar) → Intensivos (portas) → O ano (calendário pinado, mês a mês) → A semana (grade horária com filtro por pilar) → Certificações → Depoimentos → Mural e Reels → Faixa de CTA → Onde acontece → Dúvidas → Por que Nine (o 9) → Contato → Rodapé.
+Barra do curso de IA (leva a #ia) → Nav → Hero (frase + CTA dentro do card; lema e ficha abaixo) → Para quem é (manifesto) → O que é a Nine (números) → Vida na Nine (zoom "Imagine você aqui.") → Três pilares (pinado) → Grade completa (abas por pilar) → Intensivos (portas) → O ano (calendário pinado, mês a mês) → A semana (grade horária com filtro por pilar) → Certificações → Equipe → Depoimentos → Mural e Reels → Faixa de CTA → IA para Empresários → Onde acontece → Dúvidas → Por que Nine (o 9) → Contato (botão para a pré-inscrição) → Rodapé.
 
-Seções pinadas no desktop: zoom, pilares e o ano. No máximo três, nunca duas seguidas. Abaixo de 1024px e com `prefers-reduced-motion` nada fica preso.
+Seções pinadas no desktop: zoom, pilares e o ano. No máximo três, nunca duas seguidas. O zoom da galeria também roda no celular (grid 3x3 no tamanho da tela). Pilares e o ano só prendem acima de 1024px; com `prefers-reduced-motion` nada fica preso.
 
 ## Conteúdo: de onde vem cada dado
 Tudo vem do **Manual do Aluno (versão 1.2, 2026)** e da **Apresentação Nine 2026**. Não inventar dado. Se faltar, perguntar.
@@ -31,12 +32,16 @@ Tudo vem do **Manual do Aluno (versão 1.2, 2026)** e da **Apresentação Nine 2
 - **Pilar 3, Inspirar o seu mundo (8 módulos):** Igreja; Educação e Comunicação; Governo & Política e Economia & Negócios; Arte & Cultura, Ciência & Tecnologia e Serviço Social.
 - **Semana:** terça a sexta de manhã (9h–12h) em sala e à tarde (14h–18h) em Paths; segunda à tarde mentoria em grupo e Jornadas; Teologia 2º ano terça e quarta às 19h30; sábado mentoria individual e Culto AJ; domingo cultos.
 - **Aprovação:** 700 de 1.100 créditos, 75% de presença por módulo, TCC com 70 pontos. Acima de 90%, conclusão com honra.
-- **Certificações:** Nine Academia de Influência; Fatemi (Curso Livre de Teologia Ministerial); History Makers (ILI).
+- **Certificações:** Nine Academia de Influência; Fatemi (Curso Livre de Teologia Ministerial); History Makers (treinamento do ILI). Na ficha do topo o terceiro é "History Makers", não "ILI".
+- **Quem pode participar:** jovens e adultos que concluíram o ensino médio. Alunos de fora: alojamento no mesmo imóvel da sede, poucas vagas (respostas do FAQ vêm da Nine).
+- **Curso IA para Empresários | Nine Lab 2026:** textos, conteúdos, dados e link de inscrição (Asaas) enviados pela Nine; o valor (R$ 3.000) aparece nessa seção. Datas enviadas: 7/out a 25/nov, toda quarta, 9h30 às 11h30, Rua Arthur Bettes, 382, Portão.
+- **Equipe:** 20 nomes enviados (a lista tem Keli Campos duas vezes; entrou uma). Cards com iniciais até chegarem as fotos; para colocar a foto, troque o `<span class="prof__mono">` do card por `<img>` dentro de `.prof__ph`.
+- **Formulário:** Ummense (iframe `https://app.ummense.com/form/1eb7f6ec-9181-68ee-8f79-0a7cd410799c?iframe=1`; link público `https://ummen.se/BmbT6O`).
 - **Depoimentos:** Matheus Taborda, Hellenmarie Rafael e Carlos Eduardo Dolci, com o texto exato da apresentação.
 - **Contato:** contato@9ai.com.br, secretaria@9ai.com.br, (41) 3333-3363, Instagram @nine.academia.
 
 ## Identidade
-- Navy `#111749` + dourado `#F5B310` + coroa, fundo `#FAFAF7`, fonte Inter Tight (local).
+- Navy `#111749` + dourado `#F5B310` + coroa, fundo `#FAFAF7`, fonte Inter Tight (local). **Atenção:** o manual de marca (CorelDRAW, 2024) indica azul `#2A2D54`, amarelo `#F4B431` e fonte Gilroy (Light e ExtraBold). O site ainda usa as cores e a fonte do briefing original; trocar depende de decisão (Gilroy exige licença).
 - Cor por pilar, sempre a mesma na página inteira: 01 verde, 02 coral, 03 violeta. Aparece nas colagens, na grade, no calendário do ano e na semana.
 - 80% calmo (branco, navy, respiro), 20% cor nos momentos-chave. Sem estética de igreja genérica.
 - **Barra do curso de IA:** degradê azul profundo → ciano com grão, marca do N com órbita dourada e estrela (tokens `--ia-*`). Texto e destino ficam no bloco `.ia-bar` do `index.html`.
@@ -52,11 +57,11 @@ Tudo vem do **Manual do Aluno (versão 1.2, 2026)** e da **Apresentação Nine 2
 Fica a cargo da equipe da Nine: o código é entregue a eles. Site estático, sem servidor e sem build; publicar a pasta inteira na raiz do endereço (os caminhos são absolutos). `build.py` só é preciso depois de editar o `style.css`.
 
 ## Pendências (dependem da Nine)
-- Destino do formulário (`FORM_ENDPOINT` em `main.js`). Enquanto vazio, o envio abre o e-mail do visitante.
-- Nome, texto e link definitivos do curso de IA (hoje a barra leva ao formulário com "Curso de IA" marcado).
-- Nine Legacy: ainda sem informação (nem no site público nem no print do site atual); não aparece no site. As perguntas para a Nine estão no PDF "O que precisamos de vocês".
-- Ano e datas da próxima turma; idade mínima; se alunos de outras igrejas participam.
+- Nine Legacy: ainda sem informação; não aparece no site. As perguntas para a Nine estão no PDF "O que precisamos de vocês".
+- Curso de IA: datas já em andamento (7/out a 25/nov); saber se há nova turma. Símbolo oficial do curso (o N com órbita foi redesenhado). Confirmar que o valor pode aparecer.
+- Ano e datas da próxima turma; se é preciso ser de alguma igreja.
 - A apresentação fala em 4 certificados e lista 3; o site mostra os 3.
 - Endereço final do site: a Nine informa, para preencher `og:image` com URL absoluta, canonical e sitemap.
-- Política de privacidade completa (hoje há só o resumo "Como usamos seus dados" no formulário).
-- Originais em alta das fotos da apresentação (os recortes atuais têm resolução baixa). O termo de uso de imagem dos alunos já foi assinado.
+- Política de privacidade completa (o site não coleta mais dados; quem coleta agora é o formulário da Ummense, então a política precisa cobrir isso).
+- Fotos dos professores; originais em alta da estrutura e dos depoimentos.
+- Logo da Academia em SVG (o recebido é o da Faculdade), padrão de coroas em vetor e decisão sobre as cores e a fonte oficiais.
