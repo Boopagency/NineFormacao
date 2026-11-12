@@ -48,12 +48,15 @@ Tudo vem do **Manual do Aluno (versão 1.2, 2026)** e da **Apresentação Nine 2
 - **Motion:** animar só `transform`, `opacity` e `clip-path`; cada coisa anima uma vez, exceto o que acompanha o scroll.
 - **Texto:** PT-BR, falando com "você". Corpo mínimo de 16px. Sem travessão.
 
+## Hospedagem
+Fica a cargo da equipe da Nine: o código é entregue a eles. Site estático, sem servidor e sem build; publicar a pasta inteira na raiz do endereço (os caminhos são absolutos). `build.py` só é preciso depois de editar o `style.css`.
+
 ## Pendências (dependem da Nine)
 - Destino do formulário (`FORM_ENDPOINT` em `main.js`). Enquanto vazio, o envio abre o e-mail do visitante.
 - Nome, texto e link definitivos do curso de IA (hoje a barra leva ao formulário com "Curso de IA" marcado).
 - Nine Legacy: ainda sem informação (nem no site público nem no print do site atual); não aparece no site. As perguntas para a Nine estão no PDF "O que precisamos de vocês".
 - Ano e datas da próxima turma; idade mínima; se alunos de outras igrejas participam.
 - A apresentação fala em 4 certificados e lista 3; o site mostra os 3.
-- Domínio final: definir para preencher `og:image` com URL absoluta, canonical e sitemap.
+- Endereço final do site: a Nine informa, para preencher `og:image` com URL absoluta, canonical e sitemap.
 - Política de privacidade completa (hoje há só o resumo "Como usamos seus dados" no formulário).
 - Autorização de uso de imagem dos alunos; originais em alta das fotos da apresentação (os recortes atuais têm resolução baixa).

@@ -119,7 +119,7 @@ h2 { font-size: 26pt; margin-top: 2mm; }
     <div class="num num--navy"><span>Antes de divulgar</span><b>6</b></div>
     <div class="num"><span>Dados do curso para confirmar</span><b>6</b></div>
     <div class="num"><span>Material visual e de vídeo</span><b>4</b></div>
-    <div class="num"><span>Do nosso lado (publicação)</span><b>4</b></div>
+    <div class="num"><span>Do nosso lado (entrega)</span><b>4</b></div>
   </div>
 
   <div class="how">
@@ -132,7 +132,8 @@ h2 { font-size: 26pt; margin-top: 2mm; }
       <h3>Responsáveis</h3>
       <ul>
         <li><b>Nine</b>: informação, decisão, material, autorizações.</li>
-        <li><b>Boop</b>: publicação, domínio, formulário, medições.</li>
+        <li><b>Boop</b>: formulário, ajustes no código e medições.</li>
+        <li><b>Equipe de hospedagem da Nine</b>: publicação e domínio.</li>
         <li><b>Os dois</b>: texto jurídico e textos finais.</li>
       </ul>
     </div>
@@ -166,11 +167,11 @@ h2 { font-size: 26pt; margin-top: 2mm; }
     </div></div>
 
     <div class="item"><span class="box"></span><div>
-      <h3>Endereço do site e acesso ao domínio <small>PUBLICAÇÃO</small></h3>
-      <p class="why">O site ainda não foi conectado à Vercel e não tem endereço próprio. O site da Academia antigo continua no ar em outro projeto.</p>
-      <dl><dt>O que falta</dt><dd>Confirmar se o endereço será 9ai.com.br e liberar o acesso ao DNS. Com isso fechamos o endereço da imagem de compartilhamento, o canonical e o sitemap.</dd>
-      <dt>Aparece em</dt><dd class="mut">Toda a visita; prévia do link no WhatsApp e no Instagram.</dd>
-      <dt>Quem resolve</dt><dd>Nine dá o acesso · Boop publica.</dd></dl>
+      <h3>Endereço final do site <small>PUBLICAÇÃO</small></h3>
+      <p class="why">A hospedagem fica com a equipe da Nine. Falta só saber qual será o endereço do site.</p>
+      <dl><dt>O que falta</dt><dd>Confirmar o endereço (por exemplo, 9ai.com.br). Com ele fechamos a imagem de compartilhamento, o canonical e o sitemap.</dd>
+      <dt>Aparece em</dt><dd class="mut">Prévia do link no WhatsApp e no Instagram; busca.</dd>
+      <dt>Quem resolve</dt><dd>Nine informa · Boop ajusta o código.</dd></dl>
     </div></div>
 
     <div class="item"><span class="box"></span><div>
@@ -178,7 +179,7 @@ h2 { font-size: 26pt; margin-top: 2mm; }
       <p class="why">O formulário coleta nome, WhatsApp, e-mail, idade, cidade e igreja, inclusive de jovens. Hoje só existe um resumo de três linhas ("Como usamos seus dados").</p>
       <dl><dt>O que falta</dt><dd>Texto completo da política, nome do encarregado de dados (DPO) e canal para pedidos do titular. Definir também a idade mínima, porque abaixo de 18 anos a autorização é dos responsáveis.</dd>
       <dt>Aparece em</dt><dd class="mut">Formulário e rodapé.</dd>
-      <dt>Quem resolve</dt><dd>Nine e jurídico · Boop publica a página.</dd></dl>
+      <dt>Quem resolve</dt><dd>Nine e jurídico · Boop inclui a página no site.</dd></dl>
     </div></div>
 
     <div class="item"><span class="box"></span><div>
@@ -295,19 +296,19 @@ h2 { font-size: 26pt; margin-top: 2mm; }
 <section class="sec">
   <p class="label">4 · <span class="chip chip--b">Do nosso lado</span></p>
   <h2>Publicação e acompanhamento.</h2>
-  <p class="lead">Itens técnicos que a Boop executa depois que a Nine fechar as decisões da primeira parte.</p>
+  <p class="lead">Itens técnicos da entrega do código e do acompanhamento depois da publicação.</p>
   <div class="items">
 
     <div class="item"><span class="box"></span><div>
-      <h3>Conectar à Vercel e testar antes do DNS <small>PUBLICAÇÃO</small></h3>
-      <p class="why">Importar o repositório como projeto estático (sem build), validar tudo no endereço provisório e só então apontar o domínio.</p>
-      <dl><dt>Depende de</dt><dd>Acesso à conta da Vercel e ao DNS.</dd></dl>
+      <h3>Entregar o código à equipe de hospedagem <small>ENTREGA</small></h3>
+      <p class="why">O site é estático: não precisa de servidor nem de build. A pasta inteira vai para a raiz do endereço, porque os caminhos são absolutos. O único comando opcional é o que recompila o CSS depois de edições.</p>
+      <dl><dt>Depende de</dt><dd>Boop enviar o código e as instruções; Nine publicar.</dd></dl>
     </div></div>
 
     <div class="item"><span class="box"></span><div>
-      <h3>Medir o desempenho e a acessibilidade no ar <small>QUALIDADE</small></h3>
+      <h3>Medir o desempenho e a acessibilidade depois de publicado <small>QUALIDADE</small></h3>
       <p class="why">Rodar o PageSpeed no celular e no computador (meta 100) e repetir W3C e axe no endereço final. Antes do lançamento, o desktop carrega 1,7 MB e o celular 0,4 MB.</p>
-      <dl><dt>Depende de</dt><dd>Site publicado.</dd></dl>
+      <dl><dt>Depende de</dt><dd>Site publicado pela equipe da Nine.</dd></dl>
     </div></div>
 
     <div class="item"><span class="box"></span><div>
@@ -318,7 +319,7 @@ h2 { font-size: 26pt; margin-top: 2mm; }
 
     <div class="item"><span class="box"></span><div>
       <h3>O que fazer com o site antigo da Academia <small>TRANSIÇÃO</small></h3>
-      <p class="why">A página antiga continua em nineacademia.vercel.app/academia/, com o conteúdo anterior. Quando o novo site entrar, o endereço antigo deve redirecionar ou ser desativado, para ninguém ver duas versões.</p>
+      <p class="why">A página antiga continua em nineacademia.vercel.app/academia/, com o conteúdo anterior, e é da Boop. Quando o novo site entrar, o endereço antigo deve redirecionar ou ser desativado, para ninguém ver duas versões.</p>
       <dl><dt>Depende de</dt><dd>Decisão da Nine sobre manter ou desativar.</dd></dl>
     </div></div>
 
