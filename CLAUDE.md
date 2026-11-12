@@ -3,23 +3,24 @@
 Site de uma página da formação da Nine (antes vivia em `/academia/` no repositório `nineacademia`, junto com o site da Faculdade, que foi deixado de lado em nov/2026).
 
 **Objetivo:** quem chega precisa entender o que a Nine é, o que vai aprender, como é o ano e a semana, e ter sempre um caminho claro para falar com a equipe.
-**Não mostrar preço.** Valores são apresentados pela equipe; a pergunta "Qual é o investimento?" no FAQ só leva ao contato.
+**Não mostrar o preço da formação.** Valores são apresentados pela equipe; a pergunta "Qual é o investimento?" no FAQ só leva à pré-inscrição. Os valores do curso de IA (R$ 3.000) e do Legacy (R$ 99/mês) aparecem porque vieram no material enviado pela Nine.
 
 ## Arquivos
 - `index.html`: a página. Mantida à mão. O CSS fica embutido em `<style id="css">`.
 - `style.css`: fonte do CSS. Depois de editar, rode `python3 build.py` (minifica e embute na página).
 - `main.js`: todo o comportamento. No topo fica a lista `GALERIA` do mural.
-- `pre-inscricao/index.html` + `pagina.js`: página com o formulário da Ummense em iframe (mesmo visual, CSS embutido pelo `build.py`). Todos os botões "Quero conhecer" do site levam para `/pre-inscricao/`. O site não tem mais formulário em HTML.
+- `cursos/index.html` (área de cursos, com tags de status e filtro), `cursos/ia-para-empresarios/index.html` e `legacy/index.html` (menu "Já foi aluno?"): páginas à mão, mesmo cabeçalho `.fnav` e rodapé mínimo. O `build.py` embute o CSS em todas as páginas listadas nele.
+- `pre-inscricao/index.html` + `pagina.js` (ano do rodapé e filtro de /cursos/): página com o formulário da Ummense em iframe (mesmo visual, CSS embutido pelo `build.py`). Todos os botões "Quero conhecer" do site levam para `/pre-inscricao/`. O site não tem mais formulário em HTML.
 - `assets/img/galeria/` (mural, `<id>-320.webp`, `<id>-600.webp`, `<id>.webp`), `assets/img/curso/` (fotos do Drive da Nine e recortes da apresentação 2026), `assets/img/pilares/` (colagens), `assets/video/`, `assets/vendor/` (GSAP, ScrollTrigger, SplitText, Lenis), `assets/logo/nine-wordmark.svg` (NINE + coroa, do SVG oficial; no site o logo é o `<symbol id="nine-logo">` do `index.html`, que herda a cor do texto).
 
 - `material/Nine-formacao-pendencias-do-site.pdf` (fonte: `material/pendencias-do-site.html`): documento de pendências com a identidade da Nine, para enviar ao cliente. A lista da seção "Pendências" abaixo é a mesma; ao fechar um item, atualize os dois e gere o PDF de novo com o Chromium (`page.pdf`, `preferCSSPageSize`, `printBackground`).
 
-- `material/Nine-formacao-o-que-precisamos-de-voces.pdf` (fonte: `material/o-que-precisamos-de-voces.html`): versão curta e simples da lista, só com o que a Nine precisa nos enviar, incluindo as perguntas sobre o Nine Legacy.
+- `material/Nine-formacao-o-que-precisamos-de-voces.pdf` (fonte: `material/o-que-precisamos-de-voces.html`): versão curta e simples da lista, só com o que a Nine precisa nos enviar, sem as perguntas sobre o Legacy, que já foram respondidas pela proposta.
 
 Sem framework e sem build além do `build.py`. Para ver localmente: `python3 -m http.server` na raiz (os caminhos são absolutos).
 
 ## Ordem da página
-Barra do curso de IA (leva a #ia) → Nav → Hero (frase + CTA dentro do card; lema e ficha abaixo) → Para quem é (manifesto) → O que é a Nine (números) → Vida na Nine (zoom "Imagine você aqui.") → Três pilares (pinado) → Grade completa (abas por pilar) → Intensivos (portas) → O ano (calendário pinado, mês a mês) → A semana (grade horária com filtro por pilar) → Certificações → Equipe → Depoimentos → Mural e Reels → Faixa de CTA → IA para Empresários → Onde acontece → Dúvidas → Por que Nine (o 9) → Contato (botão para a pré-inscrição) → Rodapé.
+Barra azul do topo (leva a /cursos/) → Nav (com "Cursos" e "Já foi aluno?") → Hero (frase + CTA dentro do card; lema e ficha abaixo) → Para quem é (manifesto) → O que é a Nine (números) → Vida na Nine (zoom "Imagine você aqui.") → Três pilares (pinado) → Grade completa (abas por pilar) → Intensivos (portas) → O ano (calendário pinado, mês a mês) → A semana (grade horária com filtro por pilar) → Certificações → Equipe → Depoimentos → Mural e Reels → Faixa de CTA → Onde acontece → Dúvidas → Por que Nine (o 9) → Contato (botão para a pré-inscrição) → Rodapé. Fora da página principal: /cursos/, /cursos/ia-para-empresarios/, /legacy/ e /pre-inscricao/. O menu vira hambúrguer abaixo de 1100px.
 
 Seções pinadas no desktop: zoom, pilares e o ano. No máximo três, nunca duas seguidas. O zoom da galeria também roda no celular (grid 3x3 no tamanho da tela). Pilares e o ano só prendem acima de 1024px; com `prefers-reduced-motion` nada fica preso.
 
@@ -34,7 +35,9 @@ Tudo vem do **Manual do Aluno (versão 1.2, 2026)** e da **Apresentação Nine 2
 - **Aprovação:** 700 de 1.100 créditos, 75% de presença por módulo, TCC com 70 pontos. Acima de 90%, conclusão com honra.
 - **Certificações:** Nine Academia de Influência; Fatemi (Curso Livre de Teologia Ministerial); History Makers (treinamento do ILI). Na ficha do topo o terceiro é "History Makers", não "ILI".
 - **Quem pode participar:** jovens e adultos que concluíram o ensino médio. Alunos de fora: alojamento no mesmo imóvel da sede, poucas vagas (respostas do FAQ vêm da Nine).
-- **Curso IA para Empresários | Nine Lab 2026:** textos, conteúdos, dados e link de inscrição (Asaas) enviados pela Nine; o valor (R$ 3.000) aparece nessa seção. Datas enviadas: 7/out a 25/nov, toda quarta, 9h30 às 11h30, Rua Arthur Bettes, 382, Portão.
+- **Cursos (/cursos/):** cada curso é um card com tag de status: `tag--aberto` (Pré-inscrição aberta), `tag--esgotado` (Vagas esgotadas) e `tag--comunidade` (Para ex-alunos); o atributo `data-status` do `<li>` (aberto, esgotado, comunidade) alimenta o filtro. Quando abrir uma turma nova, troque a tag, o `data-status` e o botão do card.
+- **IA para Empresários | Nine Lab 2026 (/cursos/ia-para-empresarios/):** vagas esgotadas (decisão da Nine). Textos, conteúdos e dados enviados por eles: 7/out a 25/nov, toda quarta, 9h30 às 11h30, Rua Arthur Bettes, 382, Portão, R$ 3.000. O link de inscrição (Asaas, `https://www.asaas.com/c/81fd3y3vcawoylbw`) foi tirado da página por causa do esgotamento; para reabrir, recolocar o botão e trocar a tag.
+- **Legacy (/legacy/, menu "Já foi aluno?"):** comunidade paga de ex-alunos, R$ 99 por mês, com 6 benefícios (conteúdos exclusivos, comunidade, mentorias, eventos, coworking, clube de benefícios). Texto da "Proposta LEGACY Nine" enviada pela Nine; o emblema (`assets/img/legacy/emblema.webp`) é um recorte do PDF. O botão "Quero ser Legacy" abre um e-mail para contato@9ai.com.br até a Nine passar o link de assinatura.
 - **Equipe:** 20 nomes enviados (a lista tem Keli Campos duas vezes; entrou uma). Cards com iniciais até chegarem as fotos; para colocar a foto, troque o `<span class="prof__mono">` do card por `<img>` dentro de `.prof__ph`.
 - **Formulário:** Ummense (iframe `https://app.ummense.com/form/1eb7f6ec-9181-68ee-8f79-0a7cd410799c?iframe=1`; link público `https://ummen.se/BmbT6O`).
 - **Depoimentos:** Matheus Taborda, Hellenmarie Rafael e Carlos Eduardo Dolci, com o texto exato da apresentação.
@@ -57,9 +60,9 @@ Tudo vem do **Manual do Aluno (versão 1.2, 2026)** e da **Apresentação Nine 2
 Fica a cargo da equipe da Nine: o código é entregue a eles. Site estático, sem servidor e sem build; publicar a pasta inteira na raiz do endereço (os caminhos são absolutos). `build.py` só é preciso depois de editar o `style.css`.
 
 ## Pendências (dependem da Nine)
-- Nine Legacy: ainda sem informação; não aparece no site. As perguntas para a Nine estão no PDF "O que precisamos de vocês".
-- Curso de IA: datas já em andamento (7/out a 25/nov); saber se há nova turma. Símbolo oficial do curso (o N com órbita foi redesenhado). Confirmar que o valor pode aparecer.
-- Ano e datas da próxima turma; se é preciso ser de alguma igreja.
+- Legacy: link de assinatura (para onde "Quero ser Legacy" deve levar) e emblema em vetor. Confirmar que o valor (R$ 99/mês) pode aparecer.
+- Curso de IA: se haverá nova turma (datas e link de inscrição); símbolo oficial do curso (o N com órbita da faixa do topo foi redesenhado).
+- Ano e datas da próxima turma da formação; se é preciso ser de alguma igreja.
 - A apresentação fala em 4 certificados e lista 3; o site mostra os 3.
 - Endereço final do site: a Nine informa, para preencher `og:image` com URL absoluta, canonical e sitemap.
 - Política de privacidade completa (o site não coleta mais dados; quem coleta agora é o formulário da Ummense, então a política precisa cobrir isso).

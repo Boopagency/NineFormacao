@@ -10,7 +10,7 @@ def minifica(css):
     return css.replace(";}", "}").strip()
 
 css = minifica(open("style.css", encoding="utf-8").read())
-for pagina in ("index.html", "pre-inscricao/index.html"):
+for pagina in ("index.html", "pre-inscricao/index.html", "cursos/index.html", "cursos/ia-para-empresarios/index.html", "legacy/index.html"):
     html = open(pagina, encoding="utf-8").read()
     html, n = re.subn(r'<style id="css">.*?</style>', lambda m: f'<style id="css">{css}</style>', html, count=1, flags=re.S)
     assert n == 1, f"{pagina} precisa ter <style id=\"css\">"
