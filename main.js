@@ -255,12 +255,16 @@ lb.addEventListener("click", (e) => { if (e.target === lb && !lbSwipe) lb.close(
 const autoplayIO = new IntersectionObserver((es) => es.forEach((e) =>
   e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause()), { threshold: .25 });
 // Capas dos vídeos fora do topo só baixam quando chegam perto da tela (não disputam banda com o primeiro conteúdo)
+// A capa também vira fundo do <video>: o navegador esconde o poster assim que o play() começa, antes do primeiro quadro
+// chegar, e sem isso o cartão ficava em branco até o vídeo aparecer.
+const setCapa = (v, url) => { v.poster = url; v.style.backgroundImage = `url(${url})`; };
 const posterIO = new IntersectionObserver((es) => es.forEach((e) => {
   if (!e.isIntersecting) return;
-  e.target.poster = e.target.dataset.poster;
+  setCapa(e.target, e.target.dataset.poster);
   posterIO.unobserve(e.target);
-}), { rootMargin: "600px" });
+}), { rootMargin: "4000px 4000px" }); // capas pesam 10 a 40 KB: chegam bem antes do vídeo
 document.querySelectorAll("video[data-poster]").forEach((v) => posterIO.observe(v));
+document.querySelectorAll("video[poster]").forEach((v) => setCapa(v, v.getAttribute("poster")));
 
 // Vídeos só começam depois da página pronta. No celular (rede mais lenta), o do topo espera o primeiro toque ou rolagem.
 const startVideos = () => document.querySelectorAll("[data-autoplay]").forEach((v) => autoplayIO.observe(v));
