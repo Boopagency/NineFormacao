@@ -59,4 +59,4 @@ Fica a cargo da equipe da Nine: o código é entregue a eles. Site estático, se
 - A apresentação fala em 4 certificados e lista 3; o site mostra os 3.
 - Endereço final do site: a Nine informa, para preencher `og:image` com URL absoluta, canonical e sitemap.
 - Política de privacidade completa (hoje há só o resumo "Como usamos seus dados" no formulário).
-- Autorização de uso de imagem dos alunos; originais em alta das fotos da apresentação (os recortes atuais têm resolução baixa).
+- Originais em alta das fotos da apresentação (os recortes atuais têm resolução baixa). O termo de uso de imagem dos alunos já foi assinado.
