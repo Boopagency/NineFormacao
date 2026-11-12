@@ -8,7 +8,7 @@ Site de uma página da formação da Nine (antes vivia em `/academia/` no reposi
 ## Arquivos
 - `index.html`: a página. Mantida à mão. O CSS fica embutido em `<style id="css">`.
 - `style.css`: fonte do CSS. Depois de editar, rode `python3 build.py` (minifica e embute na página).
-- `main.js`: todo o comportamento. No topo fica a lista `GALERIA` do mural.
+- `main.js`: todo o comportamento. No topo fica a lista `GALERIA` do mural. **As páginas carregam `main.min.js` e `pagina.min.js`**, gerados pelo `build.py` a partir de `main.js` e `pagina.js`; edite os arquivos sem `.min` e rode `python3 build.py`.
 - `cursos/index.html` (área de cursos, com tags de status e filtro), `cursos/ia-para-empresarios/index.html` e `legacy/index.html` (menu "Já foi aluno?"): páginas à mão, mesmo cabeçalho `.fnav` e rodapé mínimo. O `build.py` embute o CSS em todas as páginas listadas nele.
 - `pre-inscricao/index.html` + `pagina.js` (ano do rodapé e filtro de /cursos/): página com o formulário da Ummense em iframe (mesmo visual, CSS embutido pelo `build.py`). Todos os botões "Quero conhecer" do site levam para `/pre-inscricao/`. O site não tem mais formulário em HTML.
 - `assets/img/galeria/` (mural, `<id>-320.webp`, `<id>-600.webp`, `<id>.webp`), `assets/img/curso/` (fotos do Drive da Nine e recortes da apresentação 2026), `assets/img/pilares/` (colagens), `assets/video/`, `assets/vendor/` (GSAP, ScrollTrigger, SplitText, Lenis), `assets/logo/nine-wordmark.svg` (NINE + coroa, do SVG oficial; no site o logo é o `<symbol id="nine-logo">` do `index.html`, que herda a cor do texto).
@@ -41,7 +41,7 @@ Tudo vem do **Manual do Aluno (versão 1.2, 2026)** e da **Apresentação Nine 2
 - **Quem pode participar:** jovens e adultos que concluíram o ensino médio. Alunos de fora: alojamento no mesmo imóvel da sede, poucas vagas (respostas do FAQ vêm da Nine).
 - **Cursos (/cursos/):** cada curso é um card com tag de status: `tag--aberto` (Pré-inscrição aberta), `tag--esgotado` (Vagas esgotadas) e `tag--comunidade` (Para ex-alunos); o atributo `data-status` do `<li>` (aberto, esgotado, comunidade) alimenta o filtro. Quando abrir uma turma nova, troque a tag, o `data-status` e o botão do card.
 - **IA para Empresários | Nine Lab 2026 (/cursos/ia-para-empresarios/):** vagas esgotadas (decisão da Nine). Textos, conteúdos e dados enviados por eles: 7/out a 25/nov, toda quarta, 9h30 às 11h30, Rua Arthur Bettes, 382, Portão, R$ 3.000. O link de inscrição (Asaas, `https://www.asaas.com/c/81fd3y3vcawoylbw`) foi tirado da página por causa do esgotamento; para reabrir, recolocar o botão e trocar a tag.
-- **Legacy (/legacy/, menu "Já foi aluno?"):** comunidade paga de ex-alunos, R$ 99 por mês, com 6 benefícios (conteúdos exclusivos, comunidade, mentorias, eventos, coworking, clube de benefícios). Texto da "Proposta LEGACY Nine" enviada pela Nine; o emblema (`assets/img/legacy/emblema.webp`) é um recorte do PDF. O botão "Quero ser Legacy" abre um e-mail para contato@9ai.com.br até a Nine passar o link de assinatura.
+- **Legacy (/legacy/, menu "Já foi aluno?"):** comunidade paga de ex-alunos, R$ 99 por mês, com 6 benefícios (conteúdos exclusivos, comunidade, mentorias, eventos, coworking, clube de benefícios). Texto da "Proposta LEGACY Nine" enviada pela Nine; o emblema (`assets/img/legacy/emblema.webp` e `emblema-560.webp`) é o arquivo transparente enviado pela Nine (1199 x 1312), sem fundo próprio; vive sobre o azul escuro. O botão "Quero ser Legacy" abre um e-mail para contato@9ai.com.br até a Nine passar o link de assinatura.
 - **Equipe:** 20 nomes enviados (a lista tem Keli Campos duas vezes; entrou uma). Cards com iniciais até chegarem as fotos; para colocar a foto, troque o `<span class="prof__mono">` do card por `<img>` dentro de `.prof__ph`.
 - **Formulário:** Ummense (iframe `https://app.ummense.com/form/1eb7f6ec-9181-68ee-8f79-0a7cd410799c?iframe=1`; link público `https://ummen.se/BmbT6O`).
 - **Depoimentos:** Matheus Taborda, Hellenmarie Rafael e Carlos Eduardo Dolci, com o texto exato da apresentação.
@@ -56,7 +56,7 @@ Tudo vem do **Manual do Aluno (versão 1.2, 2026)** e da **Apresentação Nine 2
 ## Regras
 - **Contraste (com as cores oficiais):** azul sobre papel 12,5:1; dourado sobre azul 7,1:1; azul sobre dourado 7,1:1; texto secundário sobre papel 5,4:1. Texto sobre barras coral/verde usa `#17192E`. Dourado só é texto sobre navy. Sobre fundo claro, texto sempre navy ou `--ink-muted`. Sobre foto ou vídeo, sempre com degradê navy por baixo. Verde, coral e violeta são decoração; quando viram fundo usam a versão clara (`--tint-*`) com texto navy.
 - **Acessibilidade (e-MAG/WCAG AA):** barra de atalhos com accesskey, `<noscript>`, foco visível, sem `style=""` no HTML, sem `target="_blank"`, decoração via CSS, `fieldset` nos formulários, tudo operável por teclado. Validar com W3C vnu e axe-core (com animação ligada e com movimento reduzido).
-- **Desempenho:** sem preloader, fonte local com preload, CSS embutido, GSAP/Lenis só depois do `load`, vídeos com `preload="none"` e capa, imagens fora da tela com `lazy`.
+- **Desempenho (Lighthouse 99 a 100 em tudo, celular e desktop; medir com servidor que comprime, ex.: Brotli):** sem preloader, fonte local com preload, CSS embutido, GSAP só depois do `load`, vídeos com `preload="none"` e capa, imagens fora da tela com `lazy` e com `srcset`. No celular não se carregam o Lenis (rolagem suave, só com mouse) nem o SplitText (só no desktop); títulos e palavras do manifesto têm versão leve. A inicialização das animações roda em etapas curtas (uma tarefa por etapa) para não travar a página. O formulário da Ummense (terceiro) só carrega na primeira interação ou em 6 s. Não reintroduzir scripts no carregamento nem imagens sem `srcset`.
 - **Motion:** animar só `transform`, `opacity` e `clip-path`; cada coisa anima uma vez, exceto o que acompanha o scroll.
 - **Texto:** PT-BR, falando com "você". Corpo mínimo de 16px. Sem travessão.
 
@@ -64,7 +64,7 @@ Tudo vem do **Manual do Aluno (versão 1.2, 2026)** e da **Apresentação Nine 2
 Fica a cargo da equipe da Nine: o código é entregue a eles. Site estático, sem servidor e sem build; publicar a pasta inteira na raiz do endereço (os caminhos são absolutos). `build.py` só é preciso depois de editar o `style.css`.
 
 ## Pendências (dependem da Nine)
-- Legacy: link de assinatura (para onde "Quero ser Legacy" deve levar) e emblema em vetor. Confirmar que o valor (R$ 99/mês) pode aparecer.
+- Legacy: link de assinatura (para onde "Quero ser Legacy" deve levar) e, se existir, o emblema em vetor. Confirmar que o valor (R$ 99/mês) pode aparecer.
 - Curso de IA: se haverá nova turma (datas e link de inscrição); símbolo oficial do curso (o N com órbita da faixa do topo foi redesenhado).
 - Ano e datas da próxima turma da formação; se é preciso ser de alguma igreja.
 - A apresentação fala em 4 certificados e lista 3; o site mostra os 3.

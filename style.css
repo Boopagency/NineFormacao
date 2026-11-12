@@ -1161,8 +1161,8 @@ html.no-bar { --bar-h: 0px; }
 .curso__img img { width: 100%; height: 100%; object-fit: cover; }
 .curso__img--ia { background: linear-gradient(160deg, #0A2A9E, #1296E3); }
 .curso__img--ia img { object-position: center 20%; }
-.curso__img--legacy { background: #04102E; }
-.curso__img--legacy img { object-position: center 42%; }
+.curso__img--legacy { background: radial-gradient(ellipse at 50% 45%, #0F1C4D 0%, #04102E 70%); }
+.curso__img--legacy img { object-fit: contain; padding: 20px 0 14px; }
 .curso__img .tag { position: absolute; top: 14px; left: 14px; box-shadow: 0 6px 20px rgba(0, 0, 0, .18); }
 .curso__body { display: flex; flex-direction: column; flex: 1; padding: 24px 24px 28px; }
 .curso h2 { font-size: 1.75rem; letter-spacing: -0.03em; line-height: 1.05; }
@@ -1196,7 +1196,7 @@ html.no-bar { --bar-h: 0px; }
 .lg-hero__selo { margin-top: 24px; display: flex; align-items: center; gap: 12px; font-weight: 600; color: var(--gold); }
 .lg-hero__selo .crown { width: 36px; flex: none; }
 .lg-hero .btn-row { margin-top: 28px; align-items: center; gap: 14px 24px; }
-.lg-hero__media img { display: block; width: 100%; max-width: 380px; margin-inline: auto; border-radius: 22px; box-shadow: 0 30px 80px rgba(0, 0, 0, .5), 0 0 90px rgba(244, 180, 49, .2); }
+.lg-hero__media img { display: block; width: 100%; max-width: 440px; height: auto; margin-inline: auto; filter: drop-shadow(0 24px 50px rgba(0, 0, 0, .5)) drop-shadow(0 0 60px rgba(244, 180, 49, .22)); }
 .lg-sobre .grid-12 { row-gap: 32px; }
 .lg-sobre__head { grid-column: 1 / span 5; }
 .lg-sobre__head h2 { margin-top: 16px; max-width: 14ch; }
@@ -1243,7 +1243,7 @@ html.no-bar { --bar-h: 0px; }
 @media (max-width: 1023px) {
   .lg-hero__grid, .lg-fecho__grid { grid-template-columns: 1fr; }
   .lg-hero__media { order: -1; }
-  .lg-hero__media img { max-width: 260px; margin-inline: 0; }
+  .lg-hero__media img { max-width: 240px; margin-inline: 0; }
   .lg-sobre__head, .lg-sobre__body, .lg-contrib__text, .lg-preco { grid-column: 1 / -1; }
   .lgb__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

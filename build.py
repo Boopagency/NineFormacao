@@ -18,3 +18,30 @@ for pagina in ("index.html", "pre-inscricao/index.html", "cursos/index.html", "c
     assert 'target="_blank"' not in html
     open(pagina, "w", encoding="utf-8").write(html)
 print(f"CSS embutido: {len(css) // 1024} KB")
+
+
+def minifica_js(src):
+    """Minificação conservadora: tira comentários de linha inteira e a indentação. Não mexe em nada dentro de strings."""
+    out = []
+    em_bloco = False
+    for linha in src.split("\n"):
+        t = linha.strip()
+        if em_bloco:
+            if "*/" in t:
+                em_bloco = False
+            continue
+        if t.startswith("/*") and not t.startswith("/*!"):
+            if "*/" not in t:
+                em_bloco = True
+            continue
+        if not t or t.startswith("//"):
+            continue
+        out.append(t)
+    return "\n".join(out) + "\n"
+
+
+for fonte in ("main.js", "pagina.js"):
+    js = open(fonte, encoding="utf-8").read()
+    mini = minifica_js(js)
+    open(fonte.replace(".js", ".min.js"), "w", encoding="utf-8").write(mini)
+    print(f"{fonte}: {len(js) // 1024} KB -> {len(mini) // 1024} KB")

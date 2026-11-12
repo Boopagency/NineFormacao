@@ -22,7 +22,7 @@ if (filtro) {
 // Cabeçalho: some ao descer e volta ao subir; a faixa azul sai depois de 80px (igual à página principal)
 const topo = document.querySelector("[data-top]");
 if (topo) {
-  let lastY = scrollY;
+  let lastY = 0;
   const onScroll = () => {
     const y = scrollY;
     topo.classList.toggle("is-compact", y > 80);
@@ -31,7 +31,6 @@ if (topo) {
   };
   addEventListener("scroll", onScroll, { passive: true });
   topo.addEventListener("focusin", () => topo.classList.remove("is-hidden"));
-  onScroll();
   const fechar = document.querySelector("[data-ia-close]");
   if (fechar) fechar.addEventListener("click", () => {
     document.documentElement.classList.add("no-bar");
@@ -52,4 +51,19 @@ if (menu && burger) {
   document.querySelectorAll("[data-menu-toggle]").forEach((b) => b.addEventListener("click", () => setMenu(menu.hidden)));
   menu.addEventListener("click", (e) => e.target.closest("a") && setMenu(false));
   addEventListener("keydown", (e) => e.key === "Escape" && !menu.hidden && setMenu(false));
+}
+
+// Formulário da Ummense (terceiro): carrega na primeira interação (ou em 6 s). Quem chega à página para preencher já está
+// mexendo na tela, então na prática abre na hora; a visita só de passagem não paga pelos scripts e cookies do terceiro.
+const frame = document.querySelector("iframe[data-src]");
+if (frame) {
+  let aberto = false;
+  const abrir = () => {
+    if (aberto) return;
+    aberto = true;
+    ["pointermove", "pointerdown", "touchstart", "keydown", "scroll", "focusin"].forEach((t) => removeEventListener(t, abrir));
+    frame.src = frame.dataset.src;
+  };
+  ["pointermove", "pointerdown", "touchstart", "keydown", "scroll", "focusin"].forEach((t) => addEventListener(t, abrir, { passive: true }));
+  setTimeout(abrir, 6000);
 }

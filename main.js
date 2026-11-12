@@ -401,21 +401,23 @@ const loadScript = (src) => new Promise((ok, fail) => {
   s.src = src; s.onload = ok; s.onerror = fail;
   document.head.append(s);
 });
+const comMouse = matchMedia("(hover: hover) and (pointer: fine)");
 afterLoad(() => loadScript("/assets/vendor/gsap-3.15.0.min.js")
-  .then(() => Promise.all(["ScrollTrigger-3.15.0", "SplitText-3.15.0", "lenis-1.3.26"].map((f) => loadScript(`/assets/vendor/${f}.min.js`))))
+  .then(() => Promise.all(["ScrollTrigger-3.15.0", ...(comMouse.matches ? ["lenis-1.3.26"] : []), ...(matchMedia("(max-width: 1023px)").matches ? [] : ["SplitText-3.15.0"])].map((f) => loadScript(`/assets/vendor/${f}.min.js`))))
   .then(() => document.fonts.ready)
   .then(initMotion)
   .catch(() => {})); // sem as bibliotecas o site continua completo, só sem animação
 
 function initMotion() {
-  gsap.registerPlugin(ScrollTrigger, SplitText);
+  gsap.registerPlugin(ScrollTrigger, ...(window.SplitText ? [SplitText] : [])); // SplitText só é carregado no desktop
   ScrollTrigger.config({ ignoreMobileResize: true }); // a barra do navegador no celular não refaz o pin
 
   gsap.matchMedia().add({
     motion: "(prefers-reduced-motion: no-preference)",
     desktop: "(min-width: 1024px)",
     finePointer: "(pointer: fine)",
-  }, ({ conditions: { motion, desktop, finePointer } }) => {
+  }, (ctx) => {
+    const { motion, desktop, finePointer } = ctx.conditions;
     if (!motion) {
       // Movimento reduzido: sem pin, sem scrub, sem Lenis. Só fades curtos.
       gsap.utils.toArray("[data-reveal]").forEach((el) =>
@@ -426,15 +428,22 @@ function initMotion() {
     const free = (sel) => gsap.utils.toArray(sel)
       .filter((el) => !el.closest(".hero__head, .hero__side") && !(desktop && el.closest("[data-pin]")));
 
-    // Pins primeiro e na ordem da página: o que vem depois já mede a posição com o espaço deles
-    const cleanups = [smoothScroll(), heroScroll()];
-    cleanups.push(pinZoom());
-    if (desktop) cleanups.push(pinPilares(), pinAno());
-    cleanups.push(reveals(free));
-    if (desktop && finePointer) cleanups.push(cursor(), magnetic());
-    ScrollTrigger.sort();
-    ScrollTrigger.refresh();
-    return () => cleanups.forEach((fn) => fn && fn());
+    // Pins primeiro e na ordem da página: o que vem depois já mede a posição com o espaço deles.
+    // Cada etapa roda numa tarefa própria: a inicialização inteira de uma vez travava a página por ~200 ms.
+    const passos = [smoothScroll, heroScroll, pinZoom];
+    if (desktop) passos.push(pinPilares, pinAno);
+    passos.push(() => reveals(free));
+    if (desktop && finePointer) passos.push(cursor, magnetic);
+    const cleanups = [];
+    let vivo = true;
+    const rodar = (i) => {
+      if (!vivo) return;
+      if (i >= passos.length) { ScrollTrigger.sort(); ScrollTrigger.refresh(); return; }
+      ctx.add(() => cleanups.push(passos[i]()));
+      setTimeout(() => rodar(i + 1), 0);
+    };
+    rodar(0);
+    return () => { vivo = false; cleanups.forEach((fn) => fn && fn()); };
   });
 }
 
@@ -458,6 +467,7 @@ function pinAno() {
 function once(trigger, start = "top 85%") { return { trigger, start, once: true }; }
 
 function smoothScroll() {
+  if (typeof Lenis === "undefined") return null;
   lenis = new Lenis();
   const raf = (t) => lenis.raf(t * 1000);
   lenis.on("scroll", ScrollTrigger.update);
@@ -486,11 +496,37 @@ function smoothScroll() {
 }
 
 // Padrões reutilizáveis via atributo (seção 6)
+// Divide em palavras só o texto fora de .muted, sem biblioteca, e acende uma a uma conforme a rolagem
+function palavrasLeve(el) {
+  const palavras = [];
+  [...el.childNodes].forEach((n) => {
+    if (n.nodeType !== 3) return;
+    const frag = document.createDocumentFragment();
+    n.textContent.split(/(\s+)/).forEach((t) => {
+      if (!t) return;
+      if (/^\s+$/.test(t)) return frag.append(t);
+      const s = document.createElement("span");
+      s.textContent = t;
+      frag.append(s);
+      palavras.push(s);
+    });
+    n.replaceWith(frag);
+  });
+  gsap.fromTo(palavras, { color: "#62667F" }, {
+    color: "#2A2D54", stagger: .1, ease: "none",
+    scrollTrigger: { trigger: el, start: "top 80%", end: "bottom 45%", scrub: true },
+  });
+}
+
 function reveals(free) {
+  const leve = matchMedia("(max-width: 1023px)").matches;
   free('[data-reveal="fade-up"]').forEach((el) =>
     gsap.from(el, { y: 40, opacity: 0, duration: DUR.base, ease: EASE.out, scrollTrigger: once(el) }));
 
-  free('[data-reveal="lines"]').forEach((el) => SplitText.create(el, {
+  // Celular: títulos sobem e aparecem de uma vez (dividir em linhas custa CPU; no desktop o efeito por linha continua)
+  free('[data-reveal="lines"]').forEach((el) => leve
+    ? gsap.from(el, { y: 28, opacity: 0, duration: DUR.base, ease: EASE.out, scrollTrigger: once(el) })
+    : SplitText.create(el, {
     type: "lines", mask: "lines", autoSplit: true, aria: "none",
     onSplit: (s) => gsap.from(s.lines, { yPercent: 100, duration: DUR.base, stagger: STAGGER * 1.5, ease: EASE.out, scrollTrigger: once(el) }),
   }));
@@ -502,7 +538,7 @@ function reveals(free) {
     if (inner) tl.from(inner, { scale: 1.2, duration: DUR.slow, ease: EASE.expo }, 0);
   });
 
-  gsap.utils.toArray('[data-scrub="words"]').forEach((el) => SplitText.create(el, {
+  gsap.utils.toArray('[data-scrub="words"]').forEach((el) => leve ? palavrasLeve(el) : SplitText.create(el, {
     type: "words", autoSplit: true, aria: "none",
     onSplit: (s) => gsap.fromTo(s.words.filter((w) => !w.closest(".muted")), { color: "#62667F" }, {
       color: "#2A2D54", stagger: .1, ease: "none",
