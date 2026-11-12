@@ -576,7 +576,9 @@ function heroScroll() {
 
 // Vida na Nine: o vídeo do centro cresce até a tela inteira e as 8 fotos se afastam (desktop)
 function pinZoom() {
-  const zoom = $("[data-zoom-grid]"), center = $(".zoom__center", zoom), video = $("video", center);
+  const zoom = $("[data-zoom-grid]"), center = $(".zoom__center", zoom);
+  // celular e tablet: a foto de turma faz o papel do vídeo
+  const video = matchMedia("(max-width: 1023px)").matches ? $(".zoom__still", center) : $("video", center);
   const ring = gsap.utils.toArray(".zoom__item", zoom);
   const tilt = [-8, 6, -5, 9, -7, 5, -6, 8];
   zoom.classList.add("is-pinned");

@@ -293,7 +293,14 @@ html:has(dialog[open]) { overflow: hidden; }
 .zoom__item:nth-child(5) { grid-area: 2 / 3; }
 .zoom__item:nth-child(n+6) { grid-row: 3; }
 .zoom__center { grid-area: 2 / 2; position: relative; overflow: hidden; background: var(--navy); color: #fff; display: grid; place-items: center; }
-.zoom__center video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.zoom__center video, .zoom__still { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.zoom__still { display: none; }
+/* Celular e tablet: foto de turma no lugar do vídeo (o Safari do iPhone não toca vídeo automático de forma confiável) */
+@media (max-width: 1023px) {
+  .zoom__center video { display: none; }
+  .zoom__still { display: block; }
+  .zoom .zoom__center::after { background: linear-gradient(to bottom, rgba(42, 45, 84, .62), rgba(42, 45, 84, .5)); }
+}
 .zoom__center::after { content: ""; position: absolute; inset: 0; background: rgba(42, 45, 84, .35); }
 .zoom__phrase { position: relative; z-index: 1; font-size: clamp(1.25rem, 2.6vw, 2.5rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1; padding: 16px; text-align: center; }
 
@@ -603,6 +610,7 @@ html.lenis.lenis-smooth { scroll-behavior: auto !important; }
 }
 .zoom.is-pinned .zoom__center::after { display: none; }
 .zoom.is-pinned .zoom__center video { filter: brightness(.72); }
+.zoom.is-pinned .zoom__still { filter: brightness(.52) saturate(.95); }
 .zoom.is-pinned .zoom__center { overflow: visible; }
 .zoom.is-pinned .zoom__phrase {
   position: absolute; top: 0; bottom: 0; left: 50%; width: min(100vw, 1200px); margin: 0 0 0 calc(min(100vw, 1200px) / -2);
