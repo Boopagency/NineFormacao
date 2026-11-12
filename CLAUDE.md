@@ -13,6 +13,8 @@ Site de uma página da formação da Nine (antes vivia em `/academia/` no reposi
 
 - `material/Nine-formacao-pendencias-do-site.pdf` (fonte: `material/pendencias-do-site.html`): documento de pendências com a identidade da Nine, para enviar ao cliente. A lista da seção "Pendências" abaixo é a mesma; ao fechar um item, atualize os dois e gere o PDF de novo com o Chromium (`page.pdf`, `preferCSSPageSize`, `printBackground`).
 
+- `material/Nine-formacao-o-que-precisamos-de-voces.pdf` (fonte: `material/o-que-precisamos-de-voces.html`): versão curta e simples da lista, só com o que a Nine precisa nos enviar, incluindo as perguntas sobre o Nine Legacy.
+
 Sem framework e sem build além do `build.py`. Para ver localmente: `python3 -m http.server` na raiz (os caminhos são absolutos).
 
 ## Ordem da página
@@ -49,7 +51,7 @@ Tudo vem do **Manual do Aluno (versão 1.2, 2026)** e da **Apresentação Nine 2
 ## Pendências (dependem da Nine)
 - Destino do formulário (`FORM_ENDPOINT` em `main.js`). Enquanto vazio, o envio abre o e-mail do visitante.
 - Nome, texto e link definitivos do curso de IA (hoje a barra leva ao formulário com "Curso de IA" marcado).
-- Nine Legacy: ainda sem informação; não aparece no site.
+- Nine Legacy: ainda sem informação (nem no site público nem no print do site atual); não aparece no site. As perguntas para a Nine estão no PDF "O que precisamos de vocês".
 - Ano e datas da próxima turma; idade mínima; se alunos de outras igrejas participam.
 - A apresentação fala em 4 certificados e lista 3; o site mostra os 3.
 - Domínio final: definir para preencher `og:image` com URL absoluta, canonical e sitemap.

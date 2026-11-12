@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Nine Academia de Influência | O que precisamos de vocês</title>
+<style>
+@font-face { font-family: "Inter Tight"; font-weight: 400 700; src: url("../assets/fonts/inter-tight-latin.woff2") format("woff2"); }
+:root { --navy: #111749; --gold: #F5B310; --paper-2: #F2F2EE; --muted: #4A4F6E; --line: rgba(17, 23, 73, .18); }
+* { box-sizing: border-box; margin: 0; }
+@page { size: A4; margin: 14mm 16mm 18mm;
+  @bottom-left { content: "Nine Academia de Influência · O que precisamos de vocês"; font: 500 8pt "Inter Tight"; color: #4A4F6E; }
+  @bottom-right { content: counter(page) " / " counter(pages); font: 600 8pt "Inter Tight"; color: #111749; } }
+html { font-family: "Inter Tight", system-ui, sans-serif; font-size: 10pt; line-height: 1.45; color: var(--navy); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+h1, h2, h3 { letter-spacing: -0.025em; font-weight: 600; line-height: 1.08; text-wrap: balance; }
+
+.head { position: relative; overflow: hidden; background: var(--navy); color: #fff; border-radius: 5mm; padding: 9mm 10mm 8mm; display: grid; grid-template-columns: 1fr auto; gap: 4mm 8mm; align-items: end; }
+.head::before { content: ""; position: absolute; inset: 0; background: url("../assets/logo/crown.png") 0 0 / 30mm auto; opacity: .05; }
+.head > * { position: relative; }
+.head img { grid-column: 1; width: 34mm; }
+.head .lema { grid-column: 2; grid-row: 1; text-align: right; font-size: 8pt; font-weight: 600; line-height: 1.25; }
+.head h1 { grid-column: 1 / -1; margin-top: 7mm; font-size: 30pt; letter-spacing: -0.035em; line-height: .98; }
+.head h1 em { font-style: normal; color: var(--gold); }
+.head p { grid-column: 1 / -1; max-width: 140mm; font-size: 10.5pt; color: rgba(255,255,255,.88); }
+
+.how { margin: 5mm 0 0; font-size: 9pt; color: var(--muted); }
+.how b { color: var(--navy); }
+.how span { display: inline-block; width: 4mm; height: 4mm; margin-right: 1.5mm; vertical-align: -.8mm; border: .45mm solid var(--navy); border-radius: 1mm; }
+
+h2 { margin-top: 8mm; display: flex; align-items: baseline; gap: 3mm; font-size: 15pt; break-after: avoid; }
+h2 small { font-size: 7.5pt; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h2 .n { display: inline-grid; place-items: center; width: 7mm; height: 7mm; border-radius: 50%; background: var(--navy); color: var(--gold); font-size: 9pt; letter-spacing: 0; }
+ul.list { list-style: none; padding: 0; margin-top: 2.5mm; }
+.list li { break-inside: avoid; display: grid; grid-template-columns: 7mm 1fr; padding: 2.4mm 0; border-top: 1px solid var(--line); }
+.list li:last-child { border-bottom: 1px solid var(--line); }
+.list li::before { content: ""; width: 4.2mm; height: 4.2mm; margin-top: .6mm; border: .45mm solid var(--navy); border-radius: 1mm; }
+.list b { font-weight: 600; font-size: 10.5pt; }
+.list p { margin-top: .6mm; color: var(--muted); font-size: 9.2pt; }
+
+.legacy { break-inside: avoid; margin-top: 8mm; background: var(--paper-2); border-radius: 5mm; padding: 7mm 8mm 6mm; border-left: 1.6mm solid var(--gold); }
+.legacy .tag { font-size: 7.5pt; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.legacy h2 { margin-top: 1.5mm; font-size: 17pt; }
+.legacy > p { margin-top: 2mm; font-size: 9.6pt; color: var(--navy); max-width: 150mm; }
+.legacy ol { margin: 4mm 0 0; padding: 0; list-style: none; counter-reset: q; }
+.legacy li { counter-increment: q; display: grid; grid-template-columns: 7mm 1fr; padding: 2.2mm 0; border-top: 1px solid var(--line); font-size: 9.6pt; }
+.legacy li::before { content: counter(q); width: 5mm; height: 5mm; display: grid; place-items: center; border-radius: 50%; background: var(--navy); color: var(--gold); font-size: 7.5pt; font-weight: 600; }
+.legacy li b { font-weight: 600; }
+.legacy li span { display: block; color: var(--muted); font-size: 8.8pt; margin-top: .4mm; }
+.legacy .note { margin-top: 3mm; font-size: 8.8pt; color: var(--muted); }
+
+.foot { margin-top: 8mm; break-inside: avoid; padding: 5mm 6mm; border-radius: 4mm; background: var(--navy); color: #fff; font-size: 9.2pt; display: flex; justify-content: space-between; gap: 6mm; align-items: center; }
+.foot b { color: var(--gold); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<header class="head">
+  <img src="../assets/logo/nine-logo-branco.png" alt="Nine Academia de Influência">
+  <p class="lema">Conhecer.<br>Treinar.<br>Inspirar.</p>
+  <h1>O que precisamos<br>de <em>vocês</em>.</h1>
+  <p>O site da formação está pronto. Para colocar no ar, falta a Nine nos passar as informações, os arquivos e as decisões desta lista. Pode responder na ordem, e aos poucos.</p>
+</header>
+
+<p class="how"><span></span><b>Marque</b> o que já enviou. &nbsp;·&nbsp; Nenhum valor aparece no site. &nbsp;·&nbsp; Atualizado em 12/11/2026.</p>
+
+<h2><span class="n">1</span>Para colocar no ar <small>prioridade</small></h2>
+<ul class="list">
+  <li><div><b>Para onde vão os contatos do formulário</b><p>E-mail, planilha ou WhatsApp, e quem responde as pessoas.</p></div></li>
+  <li><div><b>Endereço do site</b><p>Confirmar se será 9ai.com.br e liberar o acesso ao domínio (quem cuida do registro).</p></div></li>
+  <li><div><b>Política de privacidade</b><p>Texto completo e o nome de quem responde pelos dados na Nine.</p></div></li>
+  <li><div><b>Autorização de uso de imagem</b><p>Termo dos alunos que aparecem nas fotos e vídeos (dos responsáveis, se menores de idade).</p></div></li>
+  <li><div><b>Curso de Inteligência Artificial</b><p>Nome oficial, texto da faixa azul do topo, para onde ela leva (página, formulário ou WhatsApp), datas e se já tem inscrição aberta.</p></div></li>
+</ul>
+
+<section class="legacy">
+  <p class="tag">Também para colocar no ar</p>
+  <h2>Nine Legacy</h2>
+  <p>O Nine Legacy não aparece no site porque não recebemos nenhuma informação sobre ele. Para decidir onde e como mostrar, responda o que puder:</p>
+  <ol>
+    <li><div><b>O que é o Nine Legacy?</b><span>Em uma ou duas frases, do jeito que a Nine explicaria a um jovem.</span></div></li>
+    <li><div><b>Para quem é?</b><span>Idade, perfil e se é para quem já fez a formação.</span></div></li>
+    <li><div><b>Que tipo de coisa é?</b><span>Curso, programa, comunidade, evento ou outro. Duração, se é presencial ou online e onde acontece.</span></div></li>
+    <li><div><b>Como se liga à formação?</b><span>Vem depois, acontece junto ou é independente.</span></div></li>
+    <li><div><b>Tem datas ou inscrições abertas?</b><span>Se tiver valor, a equipe apresenta; no site só dizemos que existe.</span></div></li>
+    <li><div><b>Onde aparece no site?</b><span>Seção própria, mais um destaque na faixa do topo ou uma página separada.</span></div></li>
+    <li><div><b>Para onde o botão leva?</b><span>Formulário, WhatsApp ou página própria.</span></div></li>
+    <li><div><b>O que podem nos enviar?</b><span>Texto, logo ou símbolo, fotos e vídeo. E quem na Nine aprova o texto final.</span></div></li>
+  </ol>
+</section>
+
+<h2><span class="n">2</span>Sobre o curso <small>responder ou conferir</small></h2>
+<ul class="list">
+  <li><div><b>Próxima turma</b><p>Ano, data de início, prazo de inscrição e número de vagas (só se for divulgar). Hoje o calendário do site é o da turma 2026.</p></div></li>
+  <li><div><b>Conferir os meses do ano</b><p>Lemos do gráfico do Manual: intensivos em março, maio, julho e setembro; Paths I de março a julho, II em agosto, III de setembro a novembro; TCC em novembro; formatura em dezembro. Está certo?</p></div></li>
+  <li><div><b>Quem pode participar</b><p>Idade mínima, se precisa ser de alguma igreja e se o curso é aberto a quem não é cristão.</p></div></li>
+  <li><div><b>Quarto certificado</b><p>A Apresentação fala em 4 certificados e lista 3 (Nine, Fatemi e History Makers). Qual é o quarto, ou são 3?</p></div></li>
+  <li><div><b>Alunos de outras cidades</b><p>O site diz que a Nine recebe alunos de outras cidades e que a hospedagem depende de vagas. Pode manter?</p></div></li>
+  <li><div><b>Equipe</b><p>Nome, cargo e foto de coordenadores, tutores e professores que a Nine quiser destacar. A seção só entra com informação real.</p></div></li>
+  <li><div><b>Caixas de e-mail</b><p>contato@9ai.com.br e secretaria@9ai.com.br estão ativas? Quem acompanha?</p></div></li>
+  <li><div><b>Site antigo</b><p>Quando o novo entrar, o antigo deve sair do ar ou redirecionar para o novo?</p></div></li>
+</ul>
+
+<h2><span class="n">3</span>Arquivos <small>pode ir depois</small></h2>
+<ul class="list">
+  <li><div><b>Fotos originais em alta</b><p>Dos intensivos, da estrutura e dos depoimentos (hoje são recortes da apresentação) e 30 a 60 fotos do dia a dia, separadas por aulas, oficinas, grupos, intercâmbio, jantares, serviço e formatura.</p></div></li>
+  <li><div><b>Logos em vetor (SVG ou PDF)</b><p>Nine nas versões azul e branca, o símbolo oficial do curso de IA e o padrão de coroas.</p></div></li>
+  <li><div><b>Vídeos originais</b><p>Reels no arquivo original, não baixados do Instagram, e vídeos brutos para o topo do site.</p></div></li>
+  <li><div><b>Mais depoimentos</b><p>Vídeo curto na vertical ou texto com foto, nome e autorização. Só o que o aluno disser.</p></div></li>
+</ul>
+
+<div class="foot"><span><b>Conhecer. Treinar. Inspirar.</b> Quando tivermos o bloco 1, o site já pode ir ao ar.</span><span>9ai.com.br</span></div>
+
+</body>
+</html>
