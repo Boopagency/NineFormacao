@@ -157,6 +157,32 @@ $(".semana__legend", semana).addEventListener("click", (e) => {
   semanaChips.forEach((c) => c.setAttribute("aria-pressed", c === chip));
 });
 
+// A semana: no celular mostra um dia por vez, começando por hoje
+const diasEls = $$(".day", semana), diaBtns = $$("[data-dia]", semana);
+const hojeI = (new Date().getDay() + 6) % 7;
+const setDia = (i) => {
+  diasEls.forEach((d, k) => d.classList.toggle("is-on", k === i));
+  diaBtns.forEach((b, k) => b.setAttribute("aria-pressed", k === i));
+};
+diaBtns[hojeI].classList.add("is-today");
+diaBtns.forEach((b, k) => b.addEventListener("click", () => setDia(k)));
+semana.classList.add("is-days");
+setDia(hojeI);
+
+// Blocos que abrem e fecham só no celular (abertos no desktop e sem JavaScript)
+const mobile = matchMedia("(max-width: 767px)");
+const colapsos = $$("[data-colapsa]");
+const syncColapsos = () => colapsos.forEach((d) => { d.open = !mobile.matches; $("summary", d).tabIndex = mobile.matches ? 0 : -1; });
+const rolaveis = [[$(".steps3"), "Etapas dos Paths"]];
+const syncRolaveis = () => rolaveis.forEach(([el, nome]) => {
+  if (!el) return;
+  if (mobile.matches) { el.tabIndex = 0; el.setAttribute("aria-label", nome); }
+  else { el.removeAttribute("tabindex"); el.removeAttribute("aria-label"); }
+});
+syncColapsos();
+syncRolaveis();
+mobile.addEventListener("change", () => { syncColapsos(); syncRolaveis(); });
+
 // O ano: o mês ativo desliza no calendário e troca o painel. No desktop, o scroll conduz (pinAno, mais abaixo).
 const ano = $("[data-ano]"), anoMeses = $$(".mes", ano), anoBotoes = $$(".ano__months button", ano);
 const anoCursor = $(".ano__cursor", ano), anoMarcas = $$("[data-s]", ano);
@@ -175,7 +201,35 @@ function setAno(pos, preencher) {
 }
 ano.classList.add("is-live");
 setAno(0, false);
-anoBotoes.forEach((b, i) => b.addEventListener("click", () => (irParaMes ? irParaMes(i) : setAno(i, false))));
+const anoPainel = $(".ano__panel", ano), anoCartoes = $$(".mes", ano);
+const anoTrilho = matchMedia("(max-width: 1023px)");
+const syncAnoPainel = () => {
+  if (anoTrilho.matches) { anoPainel.tabIndex = 0; anoPainel.setAttribute("role", "region"); anoPainel.setAttribute("aria-label", "Meses do ano, deslize para o lado"); }
+  else { anoPainel.removeAttribute("tabindex"); anoPainel.removeAttribute("role"); anoPainel.removeAttribute("aria-label"); }
+};
+syncAnoPainel();
+anoTrilho.addEventListener("change", syncAnoPainel);
+// celular: os meses são cartões lado a lado; o botão leva ao cartão e deslizar troca o botão
+const irAoCartao = (i) => {
+  const c = anoCartoes[i];
+  anoPainel.scrollTo({ left: c.offsetLeft - (anoPainel.clientWidth - c.offsetWidth) / 2, behavior: reduceMotion.matches ? "auto" : "smooth" });
+};
+anoBotoes.forEach((b, i) => b.addEventListener("click", () => {
+  if (irParaMes) return irParaMes(i);
+  setAno(i, false);
+  if (anoTrilho.matches) irAoCartao(i);
+}));
+let anoRaf = 0;
+anoPainel.addEventListener("scroll", () => {
+  if (!anoTrilho.matches) return;
+  cancelAnimationFrame(anoRaf);
+  anoRaf = requestAnimationFrame(() => {
+    const meio = anoPainel.scrollLeft + anoPainel.clientWidth / 2;
+    let melhor = 0, dist = Infinity;
+    anoCartoes.forEach((c, k) => { const d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - meio); if (d < dist) { dist = d; melhor = k; } });
+    if (melhor !== mesAtivo) setAno(melhor, false);
+  });
+}, { passive: true });
 
 // Mural: fotos e filtros gerados a partir de GALERIA
 const masonry = document.querySelector("[data-masonry]");
