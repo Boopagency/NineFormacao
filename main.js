@@ -451,7 +451,7 @@ function reveals(free) {
   gsap.utils.toArray('[data-scrub="words"]').forEach((el) => SplitText.create(el, {
     type: "words", autoSplit: true, aria: "none",
     onSplit: (s) => gsap.fromTo(s.words.filter((w) => !w.closest(".muted")), { color: "#62667F" }, {
-      color: "#111749", stagger: .1, ease: "none",
+      color: "#2A2D54", stagger: .1, ease: "none",
       scrollTrigger: { trigger: el, start: "top 80%", end: "bottom 45%", scrub: true },
     }),
   }));

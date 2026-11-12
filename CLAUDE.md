@@ -41,13 +41,13 @@ Tudo vem do **Manual do Aluno (versão 1.2, 2026)** e da **Apresentação Nine 2
 - **Contato:** contato@9ai.com.br, secretaria@9ai.com.br, (41) 3333-3363, Instagram @nine.academia.
 
 ## Identidade
-- Navy `#111749` + dourado `#F5B310` + coroa, fundo `#FAFAF7`, fonte Inter Tight (local). **Atenção:** o manual de marca (CorelDRAW, 2024) indica azul `#2A2D54`, amarelo `#F4B431` e fonte Gilroy (Light e ExtraBold). O site ainda usa as cores e a fonte do briefing original; trocar depende de decisão (Gilroy exige licença).
+- Cores oficiais do manual de marca (2024): azul `#2A2D54` e amarelo `#F4B431` (tokens `--navy` e `--gold`; `--navy-90` `#353862` é o degrau mais claro), coroa, fundo `#FAFAF7`. Fonte oficial: Gilroy (Light e ExtraBold); o site usa Inter Tight (local) porque a Gilroy exige licença.
 - Cor por pilar, sempre a mesma na página inteira: 01 verde, 02 coral, 03 violeta. Aparece nas colagens, na grade, no calendário do ano e na semana.
 - 80% calmo (branco, navy, respiro), 20% cor nos momentos-chave. Sem estética de igreja genérica.
 - **Barra do curso de IA:** degradê azul profundo → ciano com grão, marca do N com órbita dourada e estrela (tokens `--ia-*`). Texto e destino ficam no bloco `.ia-bar` do `index.html`.
 
 ## Regras
-- **Contraste:** dourado só é texto sobre navy. Sobre fundo claro, texto sempre navy ou `--ink-muted`. Sobre foto ou vídeo, sempre com degradê navy por baixo. Verde, coral e violeta são decoração; quando viram fundo usam a versão clara (`--tint-*`) com texto navy.
+- **Contraste (com as cores oficiais):** azul sobre papel 12,5:1; dourado sobre azul 7,1:1; azul sobre dourado 7,1:1; texto secundário sobre papel 5,4:1. Texto sobre barras coral/verde usa `#17192E`. Dourado só é texto sobre navy. Sobre fundo claro, texto sempre navy ou `--ink-muted`. Sobre foto ou vídeo, sempre com degradê navy por baixo. Verde, coral e violeta são decoração; quando viram fundo usam a versão clara (`--tint-*`) com texto navy.
 - **Acessibilidade (e-MAG/WCAG AA):** barra de atalhos com accesskey, `<noscript>`, foco visível, sem `style=""` no HTML, sem `target="_blank"`, decoração via CSS, `fieldset` nos formulários, tudo operável por teclado. Validar com W3C vnu e axe-core (com animação ligada e com movimento reduzido).
 - **Desempenho:** sem preloader, fonte local com preload, CSS embutido, GSAP/Lenis só depois do `load`, vídeos com `preload="none"` e capa, imagens fora da tela com `lazy`.
 - **Motion:** animar só `transform`, `opacity` e `clip-path`; cada coisa anima uma vez, exceto o que acompanha o scroll.
@@ -64,4 +64,4 @@ Fica a cargo da equipe da Nine: o código é entregue a eles. Site estático, se
 - Endereço final do site: a Nine informa, para preencher `og:image` com URL absoluta, canonical e sitemap.
 - Política de privacidade completa (o site não coleta mais dados; quem coleta agora é o formulário da Ummense, então a política precisa cobrir isso).
 - Fotos dos professores; originais em alta da estrutura e dos depoimentos.
-- Logo da Academia em SVG (o recebido é o da Faculdade), padrão de coroas em vetor e decisão sobre as cores e a fonte oficiais.
+- Logo da Academia em SVG (o recebido é o da Faculdade), padrão de coroas em vetor e decisão sobre a fonte oficial (Gilroy, com licença) no lugar da Inter Tight.
