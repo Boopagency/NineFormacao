@@ -22,6 +22,7 @@ Site de uma página da formação da Nine (antes vivia em `/academia/` no reposi
 
 - `material/Nine-entrega-do-site.pdf` (fonte: `material/entrega-do-site.html`): documento de entrega para a Nine: o site (endereço de testes `nineformacao.vercel.app`), o resultado do teste do Google sem notas numéricas (pedido do cliente), a janela do formulário, o link na bio e como o código chega até eles (pacote `nine-site.zip` com `LEIA-ME.md`, sem `material/` nem `CLAUDE.md`), hospedagem e troca do domínio sem mexer nos registros MX do e-mail.
 - `LEIA-ME.md`: guia curto de publicação para quem for hospedar o site do lado da Nine.
+- `404.html` (página avulsa, CSS próprio, `noindex`, mesmo estilo do link na bio) e `.htaccess` (só para hospedagens Apache/LiteSpeed: página 404, compressão e cache moderado, tudo em `<IfModule>`; Vercel e Netlify ignoram). Se uma hospedagem der Erro 500, o `.htaccess` pode ser apagado sem prejuízo.
 
 - `material/Nine-formacao-o-que-precisamos-de-voces.pdf` (fonte: `material/o-que-precisamos-de-voces.html`): versão curta e simples da lista, só com o que a Nine precisa nos enviar, sem as perguntas sobre o Legacy, que já foram respondidas pela proposta.
 
