@@ -12,6 +12,10 @@ Site estático: só HTML, CSS, JavaScript e imagens. Não precisa de banco de da
 
 Funciona em qualquer hospedagem de site estático: Vercel, Netlify, Cloudflare Pages, GitHub Pages, ou uma hospedagem comum com painel (cPanel, Hostinger, Locaweb e similares), enviando os arquivos para a pasta `public_html` ou equivalente.
 
+## Conferir depois de publicar
+
+Junto com esta pasta veio o arquivo `teste-no-console.js`. Abra o site já publicado no Chrome, aperte F12 (no Mac, Cmd+Option+J), vá na aba **Console**, cole o conteúdo do arquivo e aperte Enter. Se o Chrome pedir, digite `allow pasting` e cole de novo. Em menos de um minuto ele confere as páginas, todos os arquivos, a página 404, a compressão e o vídeo, e mostra um resumo com ✅, ⚠️ e ❌.
+
 ## Páginas
 
 | Endereço | Página |
