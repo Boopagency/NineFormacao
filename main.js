@@ -473,6 +473,7 @@ function once(trigger, start = "top 85%") { return { trigger, start, once: true 
 function smoothScroll() {
   if (typeof Lenis === "undefined") return null;
   lenis = new Lenis();
+  window.__lenis = lenis; // a janela do formulário pausa a rolagem suave enquanto está aberta
   const raf = (t) => lenis.raf(t * 1000);
   lenis.on("scroll", ScrollTrigger.update);
   gsap.ticker.add(raf);

@@ -34,8 +34,8 @@ As respostas chegam direto na conta da Ummense da Nine.
 
 - `index.html` e as pastas `cursos/`, `legacy/`, `pre-inscricao/` e `links/`: as páginas.
 - `assets/`: imagens, vídeos, fonte, logo e bibliotecas de animação.
-- `main.min.js` e `pagina.min.js`: o comportamento das páginas (gerados a partir de `main.js` e `pagina.js`).
-- `style.css` e `build.py`: fonte do visual. O CSS já vai embutido em cada página; só é preciso rodar `python3 build.py` depois de editar `style.css`, `main.js` ou `pagina.js`.
+- `main.min.js`, `pagina.min.js` e `formulario.min.js`: o comportamento das páginas (gerados a partir de `main.js`, `pagina.js` e `formulario.js`). O `formulario.js` faz os botões "Quero conhecer" e "Quero ser Legacy" abrirem o formulário da Ummense numa janela, já carregado.
+- `style.css` e `build.py`: fonte do visual. O CSS já vai embutido em cada página; só é preciso rodar `python3 build.py` depois de editar `style.css`, `main.js`, `pagina.js` ou `formulario.js`.
 
 ## Ao trocar o domínio
 

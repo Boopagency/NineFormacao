@@ -40,7 +40,7 @@ def minifica_js(src):
     return "\n".join(out) + "\n"
 
 
-for fonte in ("main.js", "pagina.js"):
+for fonte in ("main.js", "pagina.js", "formulario.js"):
     js = open(fonte, encoding="utf-8").read()
     mini = minifica_js(js)
     open(fonte.replace(".js", ".min.js"), "w", encoding="utf-8").write(mini)
