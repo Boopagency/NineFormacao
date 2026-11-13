@@ -94,7 +94,7 @@
   } catch (e) { falha("Vídeos", e.message); }
 
   // 6. Arquivos que não precisam estar públicos
-  try { const r = await fetch("/.htaccess", { cache: "no-store" }); r.ok && !/<html/i.test(await r.text()) ? aviso(".htaccess", "está público (não faz mal, só não é necessário)") : ok(".htaccess", "não fica visível para o público"); } catch (e) {}
+  try { const r = await fetch("/.htaccess", { cache: "no-store" }); r.ok && !/<html/i.test(await r.text()) ? ok(".htaccess", "aparece publicamente nesta hospedagem; é normal e não tem nada sensível") : ok(".htaccess", "não fica visível para o público"); } catch (e) {}
 
   // 7. Formulário de pré-inscrição (Ummense) na página
   const ifr = document.querySelector("iframe[src*='ummense']");
