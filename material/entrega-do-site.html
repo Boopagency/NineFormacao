@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Nine Academia de Influência | Entrega do site</title>
+<style>
+@font-face { font-family: "Inter Tight"; font-weight: 400 700; src: url("../assets/fonts/inter-tight-latin.woff2") format("woff2"); }
+:root { --navy: #2A2D54; --gold: #F4B431; --paper: #FAFAF7; --paper-2: #F2F2EE; --muted: #4A4F6E; --line: rgba(42, 45, 84, .18); --fundo: #04183F; }
+* { box-sizing: border-box; margin: 0; }
+@page { size: A4; margin: 18mm 16mm 20mm;
+  @bottom-left { content: "Nine Academia de Influência · Entrega do site"; font: 500 8pt "Inter Tight"; color: #4A4F6E; }
+  @bottom-right { content: counter(page) " / " counter(pages); font: 600 8pt "Inter Tight"; color: #2A2D54; } }
+@page :first { margin: 0; @bottom-left { content: none; } @bottom-right { content: none; } }
+html { font-family: "Inter Tight", system-ui, sans-serif; font-size: 10pt; line-height: 1.5; color: var(--navy); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+h1, h2, h3 { font-weight: 600; letter-spacing: -0.025em; line-height: 1.06; text-wrap: balance; }
+p { text-wrap: pretty; }
+a { color: inherit; }
+.label { font-size: 7.5pt; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.label--espaco { margin-top: 9mm; }
+h2 { margin-top: 2mm; font-size: 24pt; break-after: avoid; }
+.lead { margin-top: 3.5mm; font-size: 11.5pt; color: var(--muted); max-width: 160mm; }
+.sec { margin-top: 12mm; }
+.pg { break-before: page; margin-top: 0; }
+img { display: block; max-width: 100%; }
+
+/* capa */
+.capa { position: relative; height: 297mm; width: 210mm; overflow: hidden; color: #fff; padding: 22mm 20mm; display: flex; flex-direction: column; justify-content: space-between; break-after: page; background: var(--fundo); }
+.capa__foto { position: absolute; right: 0; top: 0; bottom: 0; width: 125mm; background: url("../assets/img/links/romulo-1080.webp") 55% 20% / cover no-repeat; }
+.capa__foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--fundo) 0%, rgba(4, 24, 63, .75) 22%, rgba(4, 24, 63, 0) 55%), linear-gradient(0deg, var(--fundo) 0%, rgba(4, 24, 63, 0) 40%); }
+.capa > *:not(.capa__foto) { position: relative; z-index: 1; }
+.capa img.logo { width: 42mm; }
+.capa h1 { font-size: 46pt; line-height: .96; letter-spacing: -0.04em; max-width: 120mm; }
+.capa h1 em { font-style: normal; color: var(--gold); }
+.capa .sub { margin-top: 7mm; max-width: 98mm; font-size: 13pt; line-height: 1.35; color: rgba(255,255,255,.9); }
+.capa__url { margin-top: 9mm; display: inline-block; padding: 3mm 0; border-top: .4mm solid var(--gold); border-bottom: .4mm solid var(--gold); font-size: 13pt; font-weight: 600; color: #fff; text-decoration: none; }
+.capa__base { display: flex; gap: 12mm; padding-top: 6mm; border-top: 1px solid rgba(255,255,255,.25); max-width: 90mm; font-size: 9pt; color: rgba(255,255,255,.88); }
+.capa__base b { color: var(--gold); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: 7.5pt; display: block; }
+
+/* tabelas e listas com fio, sem cartões */
+.tab { width: 100%; margin-top: 6mm; border-collapse: collapse; font-size: 9.4pt; }
+.tab th { text-align: left; font-size: 7.5pt; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 0 3mm 2mm 0; border-bottom: .5mm solid var(--navy); }
+.tab td { padding: 2.6mm 3mm 2.6mm 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.tab td:first-child { font-weight: 600; white-space: nowrap; }
+.tab .n { text-align: center; font-variant-numeric: tabular-nums; font-weight: 600; }
+.tab th.n { text-align: center; }
+.tab .grupo td { padding-top: 4mm; }
+.mut { color: var(--muted); }
+.nota { margin-top: 3.5mm; font-size: 8.6pt; color: var(--muted); }
+
+.site { margin-top: 7mm; }
+.site .tab { margin-top: 6mm; }
+.site img { height: 78mm; object-fit: cover; object-position: top; }
+.site img { width: 100%; border: 1px solid var(--line); }
+
+/* placar */
+.placar { margin-top: 7mm; display: grid; grid-template-columns: repeat(4, 1fr); border-top: .5mm solid var(--navy); border-bottom: 1px solid var(--line); }
+.placar div { padding: 4mm 3mm 4mm 0; }
+.placar div + div { padding-left: 4mm; border-left: 1px solid var(--line); }
+.placar b { display: block; font-size: 30pt; font-weight: 600; letter-spacing: -0.04em; line-height: 1; }
+.placar span { display: block; margin-top: 2mm; font-size: 8.6pt; color: var(--muted); }
+.placar strong { display: block; font-size: 9.6pt; color: var(--navy); }
+.oque { margin-top: 6mm; display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 8mm; }
+.oque p { padding: 2.6mm 0; border-bottom: 1px solid var(--line); font-size: 9.2pt; }
+.oque b { font-weight: 600; }
+
+/* link na bio */
+.bio { margin-top: 7mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; }
+.bio figure { margin: 0; }
+.bio img { width: 100%; border: 1px solid var(--line); }
+.bio figcaption { margin-top: 2mm; font-size: 8.4pt; color: var(--muted); }
+.bio-desk { margin-top: 6mm; width: 100%; border: 1px solid var(--line); }
+
+/* passos numerados */
+.passos { margin-top: 6mm; list-style: none; padding: 0; counter-reset: p; border-top: .5mm solid var(--navy); }
+.passos li { counter-increment: p; display: grid; grid-template-columns: 12mm 1fr; gap: 3mm; padding: 3.6mm 0; border-bottom: 1px solid var(--line); break-inside: avoid; }
+.passos li::before { content: counter(p, decimal-leading-zero); font-size: 11pt; font-weight: 600; color: var(--navy); font-variant-numeric: tabular-nums; }
+.passos li > div > b { display: block; font-size: 11pt; letter-spacing: -0.01em; }
+.passos p { margin-top: 1mm; font-size: 9.3pt; color: var(--muted); }
+.passos code, .tab code, p code { font: 600 8.8pt ui-monospace, "SFMono-Regular", Menlo, monospace; color: var(--navy); }
+
+.dois { margin-top: 6mm; display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }
+.dois h3 { font-size: 12.5pt; padding-bottom: 2.5mm; border-bottom: .5mm solid var(--navy); }
+.dois ul { list-style: none; padding: 0; }
+.dois li { padding: 2.2mm 0; border-bottom: 1px solid var(--line); font-size: 9.2pt; }
+
+.alerta { margin-top: 7mm; padding: 5mm 0 5mm 6mm; border-left: 1.4mm solid var(--gold); break-inside: avoid; }
+.alerta > b { display: block; font-size: 11pt; }
+.alerta p { margin-top: 1.5mm; font-size: 9.4pt; color: var(--muted); max-width: 150mm; }
+
+.fim { margin-top: 9mm; padding: 7mm; background: var(--navy); color: #fff; break-inside: avoid; }
+.fim .label { color: var(--gold); }
+.fim h3 { margin-top: 2mm; font-size: 15pt; }
+.fim ol { margin-top: 3mm; padding-left: 5mm; font-size: 9.4pt; color: rgba(255,255,255,.92); }
+.fim li { padding: .9mm 0; }
+</style>
+</head>
+<body>
+
+<section class="capa">
+  <img class="logo" src="../assets/logo/nine-logo-branco.png" alt="Nine Academia de Influência">
+  <div>
+    <h1>O site da Nine está <em>no ar</em>.</h1>
+    <p class="sub">O site, a velocidade, o link na bio e como o código chega até vocês para hospedar no endereço da Nine.</p>
+    <a class="capa__url" href="https://nineformacao.vercel.app/">nineformacao.vercel.app</a>
+  </div>
+  <div class="capa__base">
+    <div><b>Para</b>Nine Academia de Influência</div>
+    <div><b>De</b>Boop</div>
+    <div><b>Data</b>13/11/2026</div>
+  </div>
+  <div class="capa__foto" aria-hidden="true"></div>
+</section>
+
+<section class="sec pg">
+  <p class="label">1 · O site</p>
+  <h2>Seis páginas, prontas para navegar.</h2>
+  <p class="lead">O site já pode ser visto no endereço de testes <a href="https://nineformacao.vercel.app/"><b>nineformacao.vercel.app</b></a>. É exatamente o que vai para o endereço da Nine; só o domínio muda.</p>
+  <div class="site">
+    <img src="img/site-desktop.jpg" alt="Página principal do site da formação Nine">
+    <table class="tab">
+      <thead><tr><th>Endereço</th><th>O que tem</th></tr></thead>
+      <tbody>
+        <tr><td>/</td><td>A formação: para quem é, os três pilares, a grade, o ano mês a mês, a semana, equipe, depoimentos e dúvidas.</td></tr>
+        <tr><td>/cursos/</td><td>Todos os cursos, com o status de cada um.</td></tr>
+        <tr><td>/cursos/ia-para-empresarios/</td><td>IA para Empresários, Nine Lab 2026.</td></tr>
+        <tr><td>/legacy/</td><td>Legacy, para ex-alunos.</td></tr>
+        <tr><td>/pre-inscricao/</td><td>Formulário de pré-inscrição (Ummense).</td></tr>
+        <tr><td>/links/</td><td>Link na bio do Instagram.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="oque">
+    <p><b>Conteúdo real</b> do Manual do Aluno e da Apresentação 2026.</p>
+    <p><b>Celular pensado à parte:</b> abas, calendário e semana próprios para a tela pequena.</p>
+    <p><b>Formulários da Ummense:</b> pré-inscrição e Legacy caem direto na conta da Nine.</p>
+    <p><b>Acessível</b> (padrão WCAG AA), com as cores oficiais do manual de marca.</p>
+  </div>
+</section>
+
+<section class="sec pg">
+  <p class="label">2 · Velocidade e qualidade</p>
+  <h2>Nota 100 no teste do Google.</h2>
+  <p class="lead">Medimos as seis páginas no ar com o Lighthouse, a mesma ferramenta do PageSpeed Insights do Google, no celular e no computador.</p>
+  <div class="placar">
+    <div><strong>Desempenho</strong><b>100</b><span>Abre rápido, até no 4G. Em 10 das 12 medições; a menor foi 97.</span></div>
+    <div><strong>Acessibilidade</strong><b>100</b><span>Funciona com leitor de tela e só com o teclado. Em todas as 12 medições.</span></div>
+    <div><strong>Boas práticas</strong><b>100</b><span>Seguro e sem erros no navegador. Em 10 das 12 medições; a menor foi 73.</span></div>
+    <div><strong>SEO</strong><b>100</b><span>Pronto para aparecer no Google. Em todas as 12 medições.</span></div>
+  </div>
+  <p class="nota">Seis páginas, cada uma no celular e no computador: 12 medições, notas de 0 a 100.</p>
+  <table class="tab">
+  <thead><tr><th>Página</th><th class="n" colspan="4">Celular</th><th class="n" colspan="4">Computador</th></tr>
+  <tr><th></th><th class="n">Des.</th><th class="n">Ace.</th><th class="n">B. P.</th><th class="n">SEO</th><th class="n">Des.</th><th class="n">Ace.</th><th class="n">B. P.</th><th class="n">SEO</th></tr></thead><tbody>
+  <tr><td>A formação</td><td class="n">97</td><td class="n">100</td><td class="n">100</td><td class="n">100</td><td class="n">100</td><td class="n">100</td><td class="n">100</td><td class="n">100</td></tr>
+  <tr><td>Pré-inscrição</td><td class="n">100</td><td class="n">100</td><td class="n">73</td><td class="n">100</td><td class="n">99</td><td class="n">100</td><td class="n">73</td><td class="n">100</td></tr>
+  <tr><td>Cursos</td><td class="n">100</td><td class="n">100</td><td class="n">100</td><td class="n">100</td><td class="n">100</td><td class="n">100</td><td class="n">100</td><td class="n">100</td></tr>
+  <tr><td>IA para Empresários</td><td class="n">100</td><td class="n">100</td><td class="n">100</td><td class="n">100</td><td class="n">100</td><td class="n">100</td><td class="n">100</td><td class="n">100</td></tr>
+  <tr><td>Legacy</td><td class="n">100</td><td class="n">100</td><td class="n">100</td><td class="n">100</td><td class="n">100</td><td class="n">100</td><td class="n">100</td><td class="n">100</td></tr>
+  <tr><td>Link na bio</td><td class="n">100</td><td class="n">100</td><td class="n">100</td><td class="n">100</td><td class="n">100</td><td class="n">100</td><td class="n">100</td><td class="n">100</td></tr>
+  </tbody></table>
+  <p class="nota">Medido em 13/11/2026 em nineformacao.vercel.app. As notas variam alguns pontos de uma medição para outra; isso é normal. Na pré-inscrição, "boas práticas" fica em 73 por causa do formulário da Ummense (cookies e avisos do próprio sistema deles), que carrega junto com a página para abrir mais rápido. Para conferir: abra <b>pagespeed.web.dev</b> e cole o endereço da página.</p>
+</section>
+
+<section class="sec pg">
+  <p class="label">3 · Link na bio</p>
+  <h2>No lugar do Linktree.</h2>
+  <p class="lead">Uma página com a identidade da Nine, no próprio site. Quem chega pelo Instagram escolhe entre entrar na próxima turma ou, se já foi aluno, conhecer o Legacy.</p>
+  <div class="bio">
+    <figure><img src="img/bio-celular-1.jpg" alt="Link na bio no celular: foto do Romulo no palco e o nome da Nine"><figcaption>A abertura, com a foto do palco.</figcaption></figure>
+    <figure><img src="img/bio-celular-2.jpg" alt="Aba Quero entrar: botão de pré-inscrição e índice com a formação, os cursos e o curso de IA"><figcaption>Quero entrar: pré-inscrição, formação e cursos.</figcaption></figure>
+    <figure><img src="img/bio-celular-3.jpg" alt="Aba Já fui aluno: Legacy com os benefícios e o botão Quero ser Legacy"><figcaption>Já fui aluno: o Legacy e o formulário.</figcaption></figure>
+  </div>
+  <table class="tab">
+    <thead><tr><th>Endereço</th><th>Quando usar</th></tr></thead>
+    <tbody>
+      <tr><td>nineformacao.vercel.app/links/</td><td>Hoje, enquanto o site está no endereço de testes.</td></tr>
+      <tr><td>9ai.com.br/links/</td><td>Depois que o domínio apontar para o site novo: é este que vai na bio do Instagram.</td></tr>
+      <tr><td>…/links/#ex-alunos</td><td>Abre direto na aba do Legacy. Bom para stories e mensagens para ex-alunos.</td></tr>
+    </tbody>
+  </table>
+  <p class="nota">Os botões de YouTube e Flickr já estão prontos e aparecem assim que vocês mandarem os endereços.</p>
+</section>
+
+<section class="sec pg">
+  <p class="label">4 · Como o site chega até vocês</p>
+  <h2>Vocês recebem o código completo.</h2>
+  <p class="lead">O site é feito só de arquivos: páginas, imagens e o código de cada página. Não precisa de banco de dados, de servidor especial nem de nenhuma instalação. Por isso ele roda em qualquer hospedagem.</p>
+  <ol class="passos">
+    <li><div><b>A Boop envia o pacote do site</b><p>Um arquivo <code>nine-site.zip</code>, por link de download, com a pasta completa e um guia de publicação (<code>LEIA-ME.md</code>) para quem for colocar no ar. Se a equipe técnica de vocês usar GitHub, também podemos transferir o repositório, com todo o histórico, para a conta da Nine.</p></div></li>
+    <li><div><b>Vocês escolhem onde hospedar</b><p>Pode ser a hospedagem que a Nine já usa ou uma nova. Nossa recomendação continua sendo a Vercel, onde o site roda hoje.</p></div></li>
+    <li><div><b>Quem cuida da hospedagem publica a pasta</b><p>A pasta inteira vai na <b>raiz</b> do endereço (<code>9ai.com.br/</code>, não <code>9ai.com.br/site/</code>), com HTTPS ligado.</p></div></li>
+    <li><div><b>O domínio aponta para o site novo</b><p>No painel do domínio (registro.br ou onde o 9ai.com.br estiver), troca-se o apontamento do site para a nova hospedagem. A hospedagem informa os valores.</p></div></li>
+    <li><div><b>Conferência e bio do Instagram</b><p>Abrir as seis páginas no novo endereço, enviar uma pré-inscrição de teste e conferir se chegou na Ummense. Depois, colocar <code>9ai.com.br/links/</code> na bio.</p></div></li>
+  </ol>
+
+  <div class="alerta">
+    <b>Atenção ao trocar o domínio: o e-mail não pode parar.</b>
+    <p>Mudem só os registros do <b>site</b> (tipo A ou CNAME). Os registros <b>MX</b> são os do e-mail (contato@9ai.com.br e secretaria@9ai.com.br) e devem ficar como estão. Deixem o site atual no ar até o novo estar conferido.</p>
+  </div>
+</section>
+
+<section class="sec pg">
+  <p class="label">5 · Hospedagem</p>
+  <h2>Funciona em qualquer lugar.</h2>
+  <div class="dois">
+    <div>
+      <h3>Onde pode ficar</h3>
+      <ul>
+        <li><b>Vercel</b> (recomendada): onde o site está hoje; publica direto do GitHub.</li>
+        <li>Netlify ou Cloudflare Pages: serviços do mesmo tipo.</li>
+        <li>Hospedagem comum com painel (cPanel, Hostinger, Locaweb e similares): é só enviar os arquivos para a pasta <code>public_html</code>.</li>
+        <li>Servidor próprio da Nine (Apache ou Nginx).</li>
+      </ul>
+    </div>
+    <div>
+      <h3>O que a hospedagem precisa ter</h3>
+      <ul>
+        <li>HTTPS (certificado SSL), quase sempre gratuito.</li>
+        <li>Espaço para cerca de 21 MB de arquivos.</li>
+        <li>De preferência, compressão ligada (Brotli ou gzip), para manter as notas de velocidade.</li>
+        <li><b>Não precisa:</b> PHP, banco de dados, Node ou WordPress.</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="label label--espaco">Depois que o endereço final estiver definido</p>
+  <table class="tab">
+    <tbody>
+      <tr><td>Avisar a Boop</td><td>Com o domínio definido, ajustamos o endereço final nas páginas (imagem de compartilhamento no WhatsApp e redes, e o mapa do site para o Google).</td></tr>
+      <tr><td>Alterações</td><td>Pedidos de ajuste no site continuam com a Boop, pelo canal de sempre.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="fim">
+    <p class="label">Próximos passos</p>
+    <h3>Para colocar no 9ai.com.br.</h3>
+    <ol>
+      <li>Nos dizer quem cuida da hospedagem e do domínio do lado de vocês (nome e e-mail).</li>
+      <li>A Boop envia o pacote do site e o guia de publicação para essa pessoa.</li>
+      <li>Publicação, troca do apontamento do site (sem mexer no e-mail) e conferência.</li>
+      <li>Bio do Instagram atualizada para 9ai.com.br/links/.</li>
+    </ol>
+  </div>
+</section>
+
+</body>
+</html>

@@ -19,6 +19,9 @@ Site de uma página da formação da Nine (antes vivia em `/academia/` no reposi
 
 - `material/Nine-proposta-site-e-hospedagem.pdf` (fonte: `material/proposta-site-e-hospedagem.html`, imagens em `material/img/`): proposta comercial da Boop com as três formas de seguir (site entregue, site + manutenção Boop e plano completo com painel de edição e link na bio; R$ 299/mês em qualquer uma delas), a recomendação da Vercel e a transferência do projeto.
 
+- `material/Nine-entrega-do-site.pdf` (fonte: `material/entrega-do-site.html`): documento de entrega para a Nine: o site (endereço de testes `nineformacao.vercel.app`), as notas do Lighthouse medidas no ar, o link na bio e como o código chega até eles (pacote `nine-site.zip` com `LEIA-ME.md`, sem `material/` nem `CLAUDE.md`), hospedagem e troca do domínio sem mexer nos registros MX do e-mail.
+- `LEIA-ME.md`: guia curto de publicação para quem for hospedar o site do lado da Nine.
+
 - `material/Nine-formacao-o-que-precisamos-de-voces.pdf` (fonte: `material/o-que-precisamos-de-voces.html`): versão curta e simples da lista, só com o que a Nine precisa nos enviar, sem as perguntas sobre o Legacy, que já foram respondidas pela proposta.
 
 Sem framework e sem build além do `build.py`. Para ver localmente: `python3 -m http.server` na raiz (os caminhos são absolutos).
