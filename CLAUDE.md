@@ -15,6 +15,10 @@ Site de uma página da formação da Nine (antes vivia em `/academia/` no reposi
 
 - `material/Nine-formacao-pendencias-do-site.pdf` (fonte: `material/pendencias-do-site.html`): documento de pendências com a identidade da Nine, para enviar ao cliente. A lista da seção "Pendências" abaixo é a mesma; ao fechar um item, atualize os dois e gere o PDF de novo com o Chromium (`page.pdf`, `preferCSSPageSize`, `printBackground`).
 
+- `links/index.html`: link na bio da Nine (`/links/`, no lugar do Linktree). Página avulsa com CSS e JS próprios embutidos (não passa pelo `build.py`), foto do Romulo no palco (`assets/img/links/`) e duas abas: "Quero entrar" e "Já fui aluno" (`/links/#ex-alunos` abre direto no Legacy). Os botões de YouTube e Flickr estão com `hidden` e `href="#"` até a Nine mandar os endereços.
+
+- `material/Nine-proposta-site-e-hospedagem.pdf` (fonte: `material/proposta-site-e-hospedagem.html`, imagens em `material/img/`): proposta comercial da Boop com as três formas de seguir (site entregue R$ 299/mês; + manutenção R$ 110/mês; plano completo com painel de edição e link na bio, R$ 499/mês), a recomendação da Vercel e a transferência do projeto.
+
 - `material/Nine-formacao-o-que-precisamos-de-voces.pdf` (fonte: `material/o-que-precisamos-de-voces.html`): versão curta e simples da lista, só com o que a Nine precisa nos enviar, sem as perguntas sobre o Legacy, que já foram respondidas pela proposta.
 
 Sem framework e sem build além do `build.py`. Para ver localmente: `python3 -m http.server` na raiz (os caminhos são absolutos).
@@ -64,6 +68,7 @@ Tudo vem do **Manual do Aluno (versão 1.2, 2026)** e da **Apresentação Nine 2
 Fica a cargo da equipe da Nine: o código é entregue a eles. Site estático, sem servidor e sem build; publicar a pasta inteira na raiz do endereço (os caminhos são absolutos). `build.py` só é preciso depois de editar o `style.css`.
 
 ## Pendências (dependem da Nine)
+- Link na bio: endereços do YouTube e do Flickr da Nine.
 - Legacy: link de assinatura (para onde "Quero ser Legacy" deve levar) e, se existir, o emblema em vetor. Confirmar que o valor (R$ 99/mês) pode aparecer.
 - Curso de IA: se haverá nova turma (datas e link de inscrição); símbolo oficial do curso (o N com órbita da faixa do topo foi redesenhado).
 - Ano e datas da próxima turma da formação; se é preciso ser de alguma igreja.

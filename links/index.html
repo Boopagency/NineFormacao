@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Nine Academia de Influência | Links</title>
+  <meta name="description" content="Pré-inscrição, cursos e o Legacy da Nine Academia de Influência: um ano de imersão presencial em Curitiba para conhecer, treinar e inspirar.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Nine Academia de Influência">
+  <meta property="og:description" content="Conhecer. Treinar. Inspirar. Pré-inscrição, cursos e Legacy em um só lugar.">
+  <meta property="og:image" content="/assets/img/links/og-links.jpg">
+  <meta name="theme-color" content="#03153D">
+  <link rel="icon" type="image/png" href="/assets/logo/crown.png">
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-tight-latin.woff2" crossorigin>
+  <link rel="preload" as="image" href="/assets/img/links/romulo-900.webp" imagesrcset="/assets/img/links/romulo-600.webp 600w, /assets/img/links/romulo-900.webp 900w, /assets/img/links/romulo-1080.webp 1080w" imagesizes="(min-width: 1024px) 50vw, 100vw" fetchpriority="high">
+  <style>
+@font-face { font-family: "Inter Tight"; font-style: normal; font-weight: 400 700; font-display: swap; src: url("/assets/fonts/inter-tight-latin.woff2") format("woff2"); }
+:root {
+  --fundo: #03153D; --fundo-2: #062A5A; --azul: #0B3A73; --royal: #3D5BFF;
+  --gold: #F4B431; --gold-2: #FEC34F; --navy: #2A2D54;
+  --texto: #FFFFFF; --texto-2: rgba(255, 255, 255, .84); --linha: rgba(255, 255, 255, .16);
+  --cartao: rgba(255, 255, 255, .06); --cartao-2: rgba(255, 255, 255, .1);
+  --r: 20px; --font: "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  min-height: 100svh; font-family: var(--font); font-size: 16px; line-height: 1.5; color: var(--texto);
+  /* celular: o fundo começa exatamente na cor em que a foto termina (sem emenda) */
+  background: radial-gradient(90% 40% at 100% 70%, rgba(61, 91, 255, .16), rgba(61, 91, 255, 0) 70%), linear-gradient(180deg, var(--fundo) 0, var(--fundo) 720px, var(--fundo-2) 100%);
+  background-color: var(--fundo);
+  -webkit-font-smoothing: antialiased; overflow-x: clip;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; }
+ul { list-style: none; padding: 0; }
+h1, h2, h3 { font-weight: 600; letter-spacing: -0.03em; line-height: 1.05; text-wrap: balance; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.pular { position: absolute; left: 16px; top: -100px; z-index: 50; padding: 12px 16px; border-radius: 12px; background: var(--gold); color: var(--navy); font-weight: 600; text-decoration: none; }
+.pular:focus { top: 16px; }
+.ico { width: 22px; height: 22px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- Foto (o herói) ---------- */
+.foto { position: relative; height: min(78svh, 640px); min-height: 440px; overflow: hidden; isolation: isolate; }
+.foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 55% 22%; animation: aproxima 14s ease-out both; }
+.foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(3, 21, 61, .55) 0%, rgba(3, 21, 61, 0) 22%, rgba(3, 21, 61, 0) 52%, rgba(3, 21, 61, .88) 82%, var(--fundo) 100%); }
+@keyframes aproxima { from { transform: scale(1.08); } }
+.foto__topo { position: absolute; z-index: 2; inset: 0 0 auto; display: flex; align-items: center; justify-content: space-between; padding: max(16px, env(safe-area-inset-top)) 18px 0; }
+.logo { display: block; color: #fff; line-height: 0; border-radius: 8px; }
+.logo svg { width: 92px; height: auto; filter: drop-shadow(0 2px 12px rgba(0, 0, 0, .35)); }
+.compartilhar { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .35); background: rgba(3, 21, 61, .45); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); color: #fff; cursor: pointer; }
+.compartilhar .ico { width: 20px; height: 20px; }
+.foto__legenda { position: absolute; z-index: 2; right: 18px; bottom: 88px; font-size: .8125rem; font-weight: 600; letter-spacing: .02em; color: rgba(255, 255, 255, .9); }
+
+/* ---------- Conteúdo ---------- */
+.conteudo { position: relative; z-index: 3; width: 100%; max-width: 520px; margin: -76px auto 0; padding: 0 18px max(40px, env(safe-area-inset-bottom)); }
+.selo { display: inline-flex; align-items: center; gap: 8px; font-size: .8125rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
+.selo::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 4px rgba(244, 180, 49, .2); }
+h1 { margin-top: 12px; font-size: clamp(2.25rem, 9vw, 3.1rem); }
+.lead { margin-top: 12px; font-size: 1.0625rem; color: var(--texto-2); max-width: 36ch; }
+.numeros { margin-top: 24px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--linha); border-bottom: 1px solid var(--linha); }
+.numeros li { padding: 14px 10px 14px 0; }
+.numeros li + li { padding-left: 14px; border-left: 1px solid var(--linha); }
+.numeros b { display: block; font-size: 1.5rem; font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; }
+.numeros span { display: block; margin-top: 2px; font-size: .8125rem; line-height: 1.3; color: var(--texto-2); }
+
+/* seletor Quero entrar / Já fui aluno */
+.seletor { display: none; margin-top: 24px; padding: 5px; border-radius: 999px; background: rgba(0, 0, 0, .28); box-shadow: inset 0 0 0 1px var(--linha); }
+.js .seletor { display: grid; grid-template-columns: 1fr 1fr; }
+.seletor button { min-height: 48px; border: 0; border-radius: 999px; background: none; color: var(--texto-2); font: inherit; font-weight: 600; font-size: .9688rem; cursor: pointer; transition: background-color .25s, color .25s; }
+.seletor button[aria-selected="true"] { background: #FFFDF6; color: var(--navy); }
+.painel { margin-top: 22px; }
+.painel + .painel { margin-top: 40px; }
+.js .painel + .painel { margin-top: 22px; }
+.painel__titulo { font-size: 1.75rem; }
+.painel__texto { margin-top: 10px; color: var(--texto-2); }
+
+/* botão principal */
+.cta { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 60px; margin-top: 18px; padding: 0 22px; border-radius: 999px; background: var(--gold); color: var(--navy); font-weight: 700; font-size: 1.0625rem; text-decoration: none; box-shadow: 0 14px 34px rgba(244, 180, 49, .28); transition: transform .2s, background-color .2s; }
+.cta:hover { background: var(--gold-2); transform: translateY(-2px); }
+.cta .ico { width: 20px; height: 20px; stroke-width: 2.2; }
+
+/* cartão da arte (a imagem com a frase e a logo) */
+.arte { position: relative; display: block; margin-top: 14px; overflow: hidden; border-radius: var(--r); text-decoration: none; box-shadow: 0 0 0 1px var(--linha), 0 24px 50px rgba(0, 0, 0, .3); }
+.arte img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
+.arte:hover img { transform: scale(1.03); }
+.arte__rodape { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; background: rgba(3, 21, 61, .92); font-weight: 600; }
+.arte__rodape small { display: block; font-size: .8125rem; font-weight: 400; color: var(--texto-2); }
+
+/* lista de links */
+.links { margin-top: 14px; display: grid; gap: 10px; }
+.link { display: flex; align-items: center; gap: 14px; min-height: 68px; padding: 12px 16px 12px 14px; border-radius: 18px; background: var(--cartao); box-shadow: inset 0 0 0 1px var(--linha); text-decoration: none; transition: background-color .2s, transform .2s, box-shadow .2s; }
+.link:hover { background: var(--cartao-2); transform: translateY(-2px); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .3); }
+.link__ico { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: rgba(255, 255, 255, .09); color: var(--gold); }
+.link__txt { flex: 1; min-width: 0; font-weight: 600; line-height: 1.25; }
+.link__txt small { display: block; margin-top: 3px; font-size: .875rem; font-weight: 400; color: var(--texto-2); }
+.link > .ico { width: 18px; height: 18px; color: rgba(255, 255, 255, .7); transition: transform .2s; }
+.link:hover > .ico { transform: translateX(3px); }
+.tag { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; padding: 4px 9px; border-radius: 999px; font-size: .6875rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; line-height: 1.2; }
+.tag::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.tag--esgotado { background: #FFE5E4; color: #7A1514; }
+.tag--aberto { background: var(--gold); color: var(--navy); }
+
+/* Legacy */
+.legacy { display: grid; grid-template-columns: 92px 1fr; gap: 16px; align-items: center; margin-top: 18px; padding: 18px; border-radius: var(--r); background: linear-gradient(135deg, rgba(244, 180, 49, .14), rgba(244, 180, 49, .03)); box-shadow: inset 0 0 0 1px rgba(244, 180, 49, .45); }
+.legacy img { width: 92px; height: auto; filter: drop-shadow(0 10px 24px rgba(244, 180, 49, .25)); }
+.legacy p { color: var(--texto-2); font-size: .9688rem; }
+.legacy strong { display: block; color: #fff; font-size: 1.125rem; letter-spacing: -0.01em; margin-bottom: 4px; }
+.beneficios { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+.beneficios li { padding: 8px 12px; border-radius: 999px; background: var(--cartao); box-shadow: inset 0 0 0 1px var(--linha); font-size: .875rem; font-weight: 500; }
+
+/* redes e contato */
+.redes { margin-top: 34px; padding-top: 24px; border-top: 1px solid var(--linha); display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.redes a { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: var(--cartao); box-shadow: inset 0 0 0 1px var(--linha); transition: background-color .2s, transform .2s; }
+.redes a:hover { background: var(--cartao-2); transform: translateY(-2px); }
+.contato { margin-top: 16px; text-align: center; font-size: .9375rem; color: var(--texto-2); }
+.contato a { color: #fff; text-underline-offset: 4px; }
+.rodape { margin-top: 26px; text-align: center; font-size: .8125rem; color: rgba(255, 255, 255, .72); }
+.rodape b { color: var(--gold); font-weight: 600; }
+.aviso { position: fixed; z-index: 60; left: 50%; bottom: max(20px, env(safe-area-inset-bottom)); transform: translate(-50%, 20px); padding: 12px 18px; border-radius: 999px; background: #FFFDF6; color: var(--navy); font-weight: 600; font-size: .9375rem; opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; }
+.aviso.is-on { opacity: 1; transform: translate(-50%, 0); }
+
+/* entrada suave */
+.entra { animation: sobe .7s cubic-bezier(.2, .7, .2, 1) both; }
+.entra:nth-child(2) { animation-delay: .06s; } .entra:nth-child(3) { animation-delay: .12s; } .entra:nth-child(4) { animation-delay: .18s; } .entra:nth-child(5) { animation-delay: .24s; } .entra:nth-child(6) { animation-delay: .3s; }
+@keyframes sobe { from { opacity: 0; transform: translateY(16px); } }
+
+/* ---------- Desktop: foto à esquerda, conteúdo à direita (como o link da Boop) ---------- */
+@media (min-width: 1024px) {
+  body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); background: radial-gradient(120% 70% at 85% 0%, #0B4A7A 0%, rgba(11, 74, 122, 0) 60%), linear-gradient(180deg, var(--fundo) 0%, var(--fundo-2) 100%); background-color: var(--fundo); }
+  .foto { position: sticky; top: 0; height: 100vh; min-height: 0; }
+  .foto::after { background: linear-gradient(90deg, rgba(3, 21, 61, 0) 0%, rgba(3, 21, 61, 0) 62%, var(--fundo) 100%), linear-gradient(180deg, rgba(3, 21, 61, .5) 0%, rgba(3, 21, 61, 0) 20%, rgba(3, 21, 61, 0) 70%, rgba(3, 21, 61, .75) 100%); }
+  .foto__topo { padding: 28px 32px 0; }
+  .foto__legenda { left: 32px; right: auto; bottom: 30px; }
+  .compartilhar { display: none; }
+  .conteudo { margin: 0; max-width: 520px; padding: 64px 48px 56px; align-self: center; justify-self: center; }
+  .js .compartilhar--lado { display: grid; }
+}
+.compartilhar--lado { display: none; margin-left: auto; }
+.cabeca { display: flex; align-items: flex-start; gap: 12px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" class="sr-only" aria-hidden="true" focusable="false"><symbol id="nine-logo" viewBox="0 0 115.6 50.4"><path fill="currentColor" fill-rule="evenodd" d="M55.51,50h0c.82,0,1.49-.66,1.49-1.47l.14-25.06,22.02,26.14c.12.14.26.25.41.33.22.13.47.2.74.2h0c.82,0,1.49-.66,1.49-1.47l.16-29c0-.82-.66-1.49-1.47-1.49h0c-.82,0-1.49.66-1.49,1.47l-.14,24.99-21.95-26.05c-.24-.29-.59-.47-.94-.52-.09-.02-.18-.03-.28-.03h0c-.82,0-1.49.66-1.49,1.47l-.16,29c0,.82.66,1.49,1.47,1.49M40.88,49.92h0c.82,0,1.49-.66,1.49-1.47l.16-29c0-.82-.66-1.49-1.47-1.49h0c-.82,0-1.49.66-1.49,1.47l-.16,29c0,.82.66,1.49,1.47,1.49ZM93.99,50.21h0s19.94.11,19.94.11c.82,0,1.49-.66,1.49-1.47h0c0-.82-.66-1.49-1.47-1.49l-18.46-.1.06-11.54h.01s13,.07,13,.07c.82,0,1.49-.66,1.49-1.47h0c0-.82-.66-1.49-1.47-1.49l-13-.07h-.01s.06-11.54.06-11.54l18.46.1c.82,0,1.49-.66,1.49-1.47h0c0-.82-.66-1.49-1.47-1.49l-19.94-.11h0s-.04,0-.04,0h-.04s-.04,0-.04,0h-.04s0,0,0,0h-.04s-.04,0-.04,0h0s-.05,0-.07.01h0s-.04,0-.04,0h0s-.04,0-.04,0h0s-.04,0-.04,0h0s-.03.01-.03.01h0s-.03.01-.03.01h0s-.03.01-.03.01h0s-.07.03-.1.04h0s-.03.02-.03.02h0s-.03.02-.03.02h0s-.03.02-.03.02h0s-.03.02-.03.02h0s-.06.04-.09.06h0s-.03.02-.03.02h0s-.03.02-.03.02h0s-.03.02-.03.02h0s-.03.02-.03.02h0s-.03.02-.03.02l-.03.02h0s-.03.02-.03.02h0s-.03.02-.03.02l-.02.03h0s-.02.03-.02.03h0s-.02.03-.02.03l-.02.03h0s-.02.03-.02.03h0s-.02.03-.02.03h0s-.02.03-.02.03h0s-.02.03-.02.03h0s-.04.06-.06.09h0s-.02.03-.02.03h0s-.02.03-.02.03h0s-.02.03-.02.03h0s-.02.03-.02.03h0s-.03.07-.04.1h0s-.01.03-.01.03h0s-.01.03-.01.03h0s-.01.03-.01.03h0s0,.04,0,.04h0s0,.04,0,.04h0s0,.04,0,.04h0s0,.05-.01.07h0s0,.04,0,.04v.04s0,0,0,0v.04s0,.04,0,.04v.04s0,.04,0,.04h0s-.16,29-.16,29h0s0,.04,0,.04v.04s0,.04,0,.04v.04s0,0,0,0v.04s0,.04,0,.04h0s0,.04,0,.04h0s0,.04,0,.04h0s0,.04,0,.04h0s0,.04,0,.04h0s0,.04,0,.04h0s.01.04.01.04h0s.01.03.01.03h0s.01.03.01.03h0s.01.03.01.03h0s.01.03.01.03h0s.01.03.01.03h0s.02.03.02.03h0s.02.03.02.03h0s.02.03.02.03h0s.02.03.02.03l.02.03h0s.02.03.02.03h0s.02.03.02.03h0s.02.03.02.03h0s.02.03.02.03h0s.02.03.02.03h0s.02.03.02.03h0s.02.03.02.03l.02.03h0s.02.03.02.03l.02.03.03.02h0s.03.02.03.02l.03.02.03.02.03.02.03.02.03.02.03.02.03.02h0s.03.02.03.02h0s.03.02.03.02h0s.03.02.03.02l.03.02.03.02.03.02h.03s0,.01,0,.01h.03s0,.01,0,.01h.03s.03.03.03.03h.03s.03.02.03.02h.04s.04.02.04.02h.04s.04.02.04.02h0s.04,0,.04,0h.04s.04,0,.04,0h.04s.04,0,.04,0h.04s.04,0,.04,0ZM1.52,49.69h0c.82,0,1.49-.66,1.49-1.47l.14-25.06,22.02,26.14c.12.14.26.25.41.33.22.13.47.2.74.2h0c.82,0,1.49-.66,1.49-1.47l.16-29c0-.82-.66-1.49-1.47-1.49h0c-.82,0-1.49.66-1.49,1.47l-.14,24.99L2.92,18.28c-.24-.29-.59-.47-.94-.52-.09-.02-.18-.03-.28-.03h0c-.82,0-1.49.66-1.49,1.47L.05,48.2c0,.82.66,1.49,1.47,1.49Z"/><path fill="#F4B431" fill-rule="evenodd" d="M30.84,9.46l-1.61-4.43c-.42-1.13.31-2.22,1.67-1.96l4.26.82c-.28.36-.45.8-.45,1.29,0,1.17.93,2.12,2.1,2.13s2.12-.93,2.13-2.1c0-.82-.46-1.54-1.15-1.89l2.27-2.79h0c.25-.31.62-.51,1.04-.53h0s.04,0,.04,0h.04s0,0,0,0c.42.03.79.23,1.04.54h0s2.24,2.82,2.24,2.82c-.69.35-1.16,1.06-1.17,1.88,0,1.17.93,2.12,2.1,2.13s2.12-.93,2.13-2.1c0-.49-.16-.94-.44-1.3l4.27-.78c1.37-.25,2.08.85,1.65,1.98l-1.66,4.42c-.79,1.96-1.23,2.03-3.3,1.52-2.23-.55-4.57-.85-6.97-.88-2.4,0-4.73.28-6.98.8-2.08.49-2.52.41-3.29-1.55"/></symbol></svg>
+  <svg width="0" height="0" class="sr-only" aria-hidden="true" focusable="false">
+    <symbol id="i-seta" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 15V3M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></symbol>
+    <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+    <symbol id="i-yt" viewBox="0 0 24 24"><path d="M2.5 8.2c.2-1.5 1.2-2.5 2.7-2.6C7.2 5.4 9.6 5.3 12 5.3s4.8.1 6.8.3c1.5.1 2.5 1.1 2.7 2.6.2 1.3.3 2.5.3 3.8s-.1 2.5-.3 3.8c-.2 1.5-1.2 2.5-2.7 2.6-2 .2-4.4.3-6.8.3s-4.8-.1-6.8-.3c-1.5-.1-2.5-1.1-2.7-2.6-.2-1.3-.3-2.5-.3-3.8s.1-2.5.3-3.8z"/><path d="M10 9.2v5.6l4.8-2.8z"/></symbol>
+    <symbol id="i-foto" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="15" rx="3"/><circle cx="9" cy="11" r="2"/><path d="m21 16-5-5-8 9"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></symbol>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+    <symbol id="i-curso" viewBox="0 0 24 24"><path d="M3 8.5 12 4l9 4.5-9 4.5z"/><path d="M7 10.5V15c1.5 1.4 3.2 2 5 2s3.5-.6 5-2v-4.5"/></symbol>
+    <symbol id="i-ia" viewBox="0 0 24 24"><rect x="5" y="7" width="14" height="12" rx="4"/><path d="M12 3v4M9 12h.01M15 12h.01M9.5 15.5c1.5 1 3.5 1 5 0"/></symbol>
+    <symbol id="i-casa" viewBox="0 0 24 24"><path d="M4 11 12 4l8 7v8a1 1 0 0 1-1 1h-5v-6h-4v6H5a1 1 0 0 1-1-1z"/></symbol>
+  </svg>
+  <a class="pular" href="#conteudo">Pular para os links</a>
+  <noscript><p class="sr-only">Esta página funciona sem JavaScript; o seletor mostra as duas opções abertas.</p></noscript>
+
+  <header class="foto">
+    <img src="/assets/img/links/romulo-900.webp" srcset="/assets/img/links/romulo-600.webp 600w, /assets/img/links/romulo-900.webp 900w, /assets/img/links/romulo-1080.webp 1080w" sizes="(min-width: 1024px) 50vw, 100vw" width="1080" height="1080" alt="Romulo Carvalho sorrindo no palco de um evento da Nine, com luzes azuis ao fundo" fetchpriority="high" decoding="async">
+    <div class="foto__topo">
+      <a class="logo" href="/" aria-label="Nine Academia de Influência, ir para o site"><svg viewBox="0 0 115.6 50.4" aria-hidden="true" focusable="false"><use href="#nine-logo"/></svg></a>
+      <button class="compartilhar" type="button" data-compartilhar aria-label="Compartilhar esta página"><svg class="ico" aria-hidden="true"><use href="#i-share"/></svg></button>
+    </div>
+    <p class="foto__legenda">Romulo Carvalho</p>
+  </header>
+
+  <main class="conteudo" id="conteudo">
+    <div class="cabeca entra">
+      <div>
+        <p class="selo">Academia de Influência · Curitiba</p>
+        <h1>Nine Academia de Influência</h1>
+      </div>
+      <button class="compartilhar compartilhar--lado" type="button" data-compartilhar aria-label="Compartilhar esta página"><svg class="ico" aria-hidden="true"><use href="#i-share"/></svg></button>
+    </div>
+    <p class="lead entra">Um ano de imersão presencial para descobrir quem você é em Deus e se preparar para inspirar o mundo.</p>
+
+    <ul class="numeros entra" aria-label="A Nine em números">
+      <li><b>9 meses</b><span>de aulas, de março a novembro</span></li>
+      <li><b>3 pilares</b><span>Conhecer, Treinar e Inspirar</span></li>
+      <li><b>3</b><span>certificações ao concluir</span></li>
+    </ul>
+
+    <div class="seletor entra" role="tablist" aria-label="Escolha o seu caminho">
+      <button type="button" role="tab" id="aba-entrar" aria-controls="painel-entrar" aria-selected="true">Quero entrar</button>
+      <button type="button" role="tab" id="aba-aluno" aria-controls="painel-aluno" aria-selected="false" tabindex="-1">Já fui aluno</button>
+    </div>
+
+    <section class="painel entra" id="painel-entrar" role="tabpanel" aria-labelledby="aba-entrar">
+      <h2 class="painel__titulo">Sua turma começa aqui.</h2>
+      <p class="painel__texto">Faça sua pré-inscrição e a equipe da Nine fala com você para apresentar o curso.</p>
+      <a class="cta" href="/pre-inscricao/">Fazer minha pré-inscrição <svg class="ico" aria-hidden="true"><use href="#i-seta"/></svg></a>
+
+      <a class="arte" href="/">
+        <img src="/assets/img/links/nine-arte-720.webp" srcset="/assets/img/links/nine-arte-720.webp 720w, /assets/img/links/nine-arte-1200.webp 1200w" sizes="(min-width: 1024px) 424px, 92vw" width="1200" height="675" alt="Arte da Nine: logo NINE com a coroa e a frase Conhecer, Treinar, Inspirar" loading="lazy" decoding="async">
+        <span class="arte__rodape"><span>Conheça a formação<small>Pilares, o ano mês a mês e a semana</small></span><svg class="ico" aria-hidden="true"><use href="#i-seta"/></svg></span>
+      </a>
+
+      <ul class="links">
+        <li><a class="link" href="/cursos/"><span class="link__ico"><svg class="ico" aria-hidden="true"><use href="#i-curso"/></svg></span><span class="link__txt">Cursos da Nine<small>Formação, Nine Lab e Legacy</small></span><svg class="ico" aria-hidden="true"><use href="#i-seta"/></svg></a></li>
+        <li><a class="link" href="/cursos/ia-para-empresarios/"><span class="link__ico"><svg class="ico" aria-hidden="true"><use href="#i-ia"/></svg></span><span class="link__txt">IA para Empresários<small>Nine Lab 2026</small><span class="tag tag--esgotado">Vagas esgotadas</span></span><svg class="ico" aria-hidden="true"><use href="#i-seta"/></svg></a></li>
+        <!-- YouTube e Flickr: preencher o href com o endereço da Nine e tirar o "hidden" -->
+        <li hidden><a class="link" href="#"><span class="link__ico"><svg class="ico" aria-hidden="true"><use href="#i-yt"/></svg></span><span class="link__txt">YouTube<small>Nine Academia</small></span><svg class="ico" aria-hidden="true"><use href="#i-seta"/></svg></a></li>
+        <li hidden><a class="link" href="#"><span class="link__ico"><svg class="ico" aria-hidden="true"><use href="#i-foto"/></svg></span><span class="link__txt">Fotos da turma<small>Álbuns no Flickr</small></span><svg class="ico" aria-hidden="true"><use href="#i-seta"/></svg></a></li>
+      </ul>
+    </section>
+
+    <section class="painel" id="painel-aluno" role="tabpanel" aria-labelledby="aba-aluno">
+      <h2 class="painel__titulo">Sua formação terminou. Sua história com a Nine continua.</h2>
+      <div class="legacy">
+        <img src="/assets/img/legacy/emblema-320.webp" width="320" height="356" alt="Emblema do Legacy: escudo dourado com um N e a faixa Legacy" loading="lazy" decoding="async">
+        <p><strong>Legacy</strong>Uma comunidade exclusiva para Niners formados.</p>
+      </div>
+      <ul class="beneficios" aria-label="Benefícios do Legacy">
+        <li>Conteúdos exclusivos</li><li>Comunidade</li><li>Mentorias</li><li>Eventos</li><li>Coworking</li><li>Clube de benefícios</li>
+      </ul>
+      <a class="cta" href="/legacy/">Conhecer o Legacy <svg class="ico" aria-hidden="true"><use href="#i-seta"/></svg></a>
+    </section>
+
+    <nav class="redes" aria-label="Redes e contato">
+      <a href="https://www.instagram.com/nine.academia/" aria-label="Instagram @nine.academia"><svg class="ico" aria-hidden="true"><use href="#i-insta"/></svg></a>
+      <a href="/" aria-label="Site da Nine"><svg class="ico" aria-hidden="true"><use href="#i-casa"/></svg></a>
+      <a href="mailto:contato@9ai.com.br" aria-label="E-mail contato@9ai.com.br"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg></a>
+      <a href="tel:+554133333363" aria-label="Telefone (41) 3333-3363"><svg class="ico" aria-hidden="true"><use href="#i-tel"/></svg></a>
+    </nav>
+    <p class="contato"><a href="mailto:contato@9ai.com.br">contato@9ai.com.br</a> · <a href="tel:+554133333363">(41) 3333-3363</a></p>
+    <p class="rodape"><b>Conhecer. Treinar. Inspirar.</b> · © <span data-ano>2026</span> Nine Academia de Influência</p>
+  </main>
+
+  <p class="aviso" role="status" data-aviso></p>
+
+  <script>
+(() => {
+  document.documentElement.classList.add("js");
+  document.querySelectorAll("[data-ano]").forEach((el) => (el.textContent = new Date().getFullYear()));
+
+  // Quero entrar / Já fui aluno (abas acessíveis; sem JavaScript as duas partes ficam visíveis)
+  const abas = [...document.querySelectorAll('[role="tab"]')];
+  const paineis = abas.map((a) => document.getElementById(a.getAttribute("aria-controls")));
+  const ativar = (i, foco) => {
+    abas.forEach((a, k) => { a.setAttribute("aria-selected", k === i); a.tabIndex = k === i ? 0 : -1; paineis[k].hidden = k !== i; });
+    if (foco) abas[i].focus();
+  };
+  abas.forEach((a, i) => {
+    a.addEventListener("click", () => ativar(i));
+    a.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight" || e.key === "ArrowLeft") { e.preventDefault(); ativar((i + (e.key === "ArrowRight" ? 1 : -1) + abas.length) % abas.length, true); }
+    });
+  });
+  ativar(location.hash === "#ex-alunos" ? 1 : 0);
+
+  // Compartilhar: menu do celular quando existe; senão, copia o endereço
+  const aviso = document.querySelector("[data-aviso]");
+  const avisar = (t) => { aviso.textContent = t; aviso.classList.add("is-on"); clearTimeout(avisar.t); avisar.t = setTimeout(() => aviso.classList.remove("is-on"), 2200); };
+  document.querySelectorAll("[data-compartilhar]").forEach((b) => b.addEventListener("click", async () => {
+    const dados = { title: "Nine Academia de Influência", text: "Conhecer. Treinar. Inspirar.", url: location.href.split("#")[0] };
+    try {
+      if (navigator.share) return await navigator.share(dados);
+      await navigator.clipboard.writeText(dados.url);
+      avisar("Link copiado");
+    } catch (e) { if (e && e.name !== "AbortError") avisar("Não foi possível compartilhar"); }
+  }));
+})();
+  </script>
+</body>
+</html>

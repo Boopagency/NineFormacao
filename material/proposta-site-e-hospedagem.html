@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Nine Academia de Influência | Site pronto: como seguir</title>
+<style>
+@font-face { font-family: "Inter Tight"; font-weight: 400 700; src: url("../assets/fonts/inter-tight-latin.woff2") format("woff2"); }
+:root { --navy: #2A2D54; --navy-90: #353862; --gold: #F4B431; --paper: #FAFAF7; --paper-2: #F2F2EE; --muted: #4A4F6E; --line: rgba(42, 45, 84, .16); --fundo: #03153D; }
+* { box-sizing: border-box; margin: 0; }
+@page { size: A4; margin: 18mm 16mm 20mm;
+  @bottom-left { content: "Nine Academia de Influência · Site pronto: como seguir"; font: 500 8pt "Inter Tight"; color: #4A4F6E; }
+  @bottom-right { content: counter(page) " / " counter(pages); font: 600 8pt "Inter Tight"; color: #2A2D54; } }
+@page :first { margin: 0; @bottom-left { content: none; } @bottom-right { content: none; } }
+html { font-family: "Inter Tight", system-ui, sans-serif; font-size: 10pt; line-height: 1.5; color: var(--navy); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+h1, h2, h3 { font-weight: 600; letter-spacing: -0.025em; line-height: 1.06; text-wrap: balance; }
+p { text-wrap: pretty; }
+.label--espaco { margin-top: 8mm; }
+.label { font-size: 7.5pt; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h2 { margin-top: 2mm; font-size: 24pt; break-after: avoid; }
+.lead { margin-top: 3.5mm; font-size: 11.5pt; color: var(--muted); max-width: 155mm; break-inside: avoid; }
+.sec { margin-top: 12mm; }
+.pg { break-before: page; margin-top: 0; }
+
+/* capa */
+.capa { position: relative; height: 297mm; width: 210mm; overflow: hidden; color: #fff; padding: 22mm 20mm; display: flex; flex-direction: column; justify-content: space-between; break-after: page;
+  background: radial-gradient(120% 60% at 90% 0%, #0B4A7A 0%, rgba(11, 74, 122, 0) 60%), linear-gradient(180deg, #03153D, #062A5A); }
+.capa__foto { position: absolute; right: 0; bottom: 0; width: 120mm; height: 165mm; background: url("img/bio-desktop.jpg") 0 0 / auto 100% no-repeat; opacity: .9; border-top-left-radius: 8mm; box-shadow: 0 0 0 .4mm rgba(255,255,255,.18); }
+.capa__foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #04183F 0%, rgba(4, 24, 63, 0) 40%), linear-gradient(0deg, rgba(4,24,63,.6), rgba(4,24,63,0) 30%); }
+.capa > *:not(.capa__foto) { position: relative; z-index: 1; }
+.capa img.logo { width: 42mm; }
+.capa .meta { font-size: 9pt; color: rgba(255,255,255,.86); }
+.capa .meta b { color: var(--gold); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; font-size: 7.5pt; display: block; }
+.capa h1 { font-size: 46pt; line-height: .96; letter-spacing: -0.04em; max-width: 120mm; }
+.capa h1 em { font-style: normal; color: var(--gold); }
+.capa .sub { margin-top: 7mm; max-width: 95mm; font-size: 13pt; line-height: 1.35; color: rgba(255,255,255,.88); }
+.capa__base { display: flex; gap: 12mm; padding-top: 6mm; border-top: 1px solid rgba(255,255,255,.25); max-width: 85mm; }
+
+/* pronto */
+.pronto { margin-top: 7mm; display: grid; grid-template-columns: 1.05fr 1fr; gap: 7mm; align-items: start; }
+.pronto img { width: 100%; border-radius: 3mm; box-shadow: 0 0 0 .3mm var(--line), 0 4mm 10mm rgba(42,45,84,.15); }
+.checks { list-style: none; padding: 0; }
+.checks li { position: relative; padding: 2.2mm 0 2.2mm 7mm; border-top: 1px solid var(--line); font-size: 9.6pt; }
+.checks li:last-child { border-bottom: 1px solid var(--line); }
+.checks li::before { content: ""; position: absolute; left: 0; top: 3.2mm; width: 4mm; height: 4mm; border-radius: 50%; background: var(--navy) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='%23F4B431' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 3mm no-repeat; }
+.checks b { font-weight: 600; }
+
+/* planos */
+.planos { margin-top: 7mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5mm; }
+.plano { break-inside: avoid; display: flex; flex-direction: column; padding: 6mm 5mm 5mm; border-radius: 4mm; background: var(--paper-2); }
+.plano--top { background: var(--navy); color: #fff; box-shadow: 0 0 0 .6mm var(--gold); }
+.plano .tag { align-self: flex-start; padding: .8mm 2.6mm; border-radius: 99px; font-size: 6.8pt; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; background: #fff; color: var(--navy); box-shadow: inset 0 0 0 .3mm var(--line); }
+.plano--top .tag { background: var(--gold); box-shadow: none; }
+.plano h3 { margin-top: 4mm; font-size: 14pt; }
+.plano .desc { margin-top: 2mm; font-size: 9pt; color: var(--muted); min-height: 21mm; }
+.plano--top .desc { color: rgba(255,255,255,.86); }
+.preco { margin-top: 3mm; padding-top: 3mm; border-top: 1px solid var(--line); }
+.plano--top .preco { border-top-color: rgba(255,255,255,.2); }
+.preco b { display: block; font-size: 24pt; font-weight: 600; letter-spacing: -0.04em; line-height: 1; }
+.preco b small { font-size: 9pt; letter-spacing: 0; font-weight: 500; }
+.preco span { display: block; margin-top: 1.5mm; font-size: 8pt; color: var(--muted); }
+.plano--top .preco span { color: rgba(255,255,255,.8); }
+.plano ul { margin-top: 3.5mm; list-style: none; padding: 0; font-size: 8.8pt; }
+.plano li { padding: 1.4mm 0 1.4mm 4.5mm; position: relative; border-top: 1px solid var(--line); }
+.plano--top li { border-top-color: rgba(255,255,255,.16); }
+.plano li::before { content: ""; position: absolute; left: 0; top: 2.9mm; width: 1.8mm; height: 1.8mm; border-radius: 50%; background: var(--gold); }
+.plano li.nao { color: var(--muted); }
+.plano li.nao::before { background: none; box-shadow: inset 0 0 0 .3mm var(--muted); }
+.escolha { margin-top: 3mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; break-inside: avoid; }
+.escolha > div { padding: 4mm 0 0; border-top: .5mm solid var(--navy); font-size: 9pt; }
+.escolha b { font-size: 10.5pt; }
+.escolha p { margin-top: 1.5mm; color: var(--muted); }
+.nota { margin-top: 4mm; font-size: 8.6pt; color: var(--muted); }
+
+/* hospedagem */
+.reco { margin-top: 6mm; display: grid; grid-template-columns: 1.15fr 1fr; gap: 6mm; }
+.box { break-inside: avoid; padding: 6mm; border-radius: 4mm; background: var(--paper-2); }
+.box--navy { background: var(--navy); color: #fff; }
+.box--navy .label { color: var(--gold); }
+.box h3 { margin-top: 2mm; font-size: 14pt; }
+.box p { margin-top: 2mm; font-size: 9.3pt; }
+.box--navy p, .box--navy li { color: rgba(255,255,255,.9); }
+.box ul { margin-top: 3mm; list-style: none; padding: 0; font-size: 9pt; }
+.box li { padding: 1.6mm 0 1.6mm 4.5mm; position: relative; border-top: 1px solid rgba(255,255,255,.16); }
+.box:not(.box--navy) li { border-top-color: var(--line); }
+.box li::before { content: ""; position: absolute; left: 0; top: 3.1mm; width: 1.8mm; height: 1.8mm; border-radius: 50%; background: var(--gold); }
+.custo { margin-top: 4mm; padding-top: 3mm; border-top: 1px solid rgba(255,255,255,.2); font-size: 8.8pt; }
+.custo b { color: var(--gold); font-size: 13pt; letter-spacing: -0.02em; display: block; }
+.passos { margin-top: 6mm; list-style: none; padding: 0; counter-reset: p; display: grid; grid-template-columns: repeat(5, 1fr); gap: 3mm; }
+.passos li { counter-increment: p; break-inside: avoid; padding: 4mm 3.5mm; border-radius: 3mm; background: #fff; box-shadow: inset 0 0 0 .3mm var(--line); font-size: 8.6pt; }
+.passos li::before { content: counter(p); display: grid; place-items: center; width: 6mm; height: 6mm; border-radius: 50%; background: var(--navy); color: var(--gold); font-weight: 700; font-size: 8.5pt; margin-bottom: 2.5mm; }
+.passos b { display: block; font-size: 9.6pt; margin-bottom: 1mm; }
+.passos span { color: var(--muted); }
+
+/* plano completo */
+.editam { margin-top: 6mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5mm; }
+.editam > div { break-inside: avoid; padding: 5mm; border-radius: 3.5mm; background: var(--paper-2); }
+.editam h3 { font-size: 11.5pt; }
+.editam p { margin-top: 1.5mm; font-size: 8.8pt; color: var(--muted); }
+.tempo { margin-top: 6mm; display: flex; gap: 0; border-radius: 3mm; overflow: hidden; break-inside: avoid; }
+.tempo div { flex: 1; padding: 3.5mm 3.5mm; background: var(--paper-2); font-size: 8.4pt; border-right: .5mm solid var(--paper); }
+.tempo div:last-child { border-right: 0; background: var(--navy); color: #fff; }
+.tempo b { display: block; font-size: 9.2pt; }
+.tempo span { color: var(--muted); }
+.tempo div:last-child span { color: rgba(255,255,255,.85); }
+
+/* link na bio */
+.bio { margin-top: 6mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; }
+.bio img { width: 100%; border-radius: 4mm; box-shadow: 0 0 0 .3mm var(--line), 0 4mm 10mm rgba(3, 21, 61, .25); }
+.bio-desk { margin-top: 5mm; width: 100%; border-radius: 3mm; box-shadow: 0 0 0 .3mm var(--line); }
+.feitos { margin-top: 5mm; display: grid; grid-template-columns: 1fr 1fr; gap: 0 6mm; }
+.fim { margin-top: 9mm; padding: 6mm 7mm; border-radius: 4mm; background: var(--navy); color: #fff; break-inside: avoid; }
+.fim .label { color: var(--gold); }
+.fim h3 { margin-top: 2mm; font-size: 15pt; }
+.fim ol { margin-top: 3mm; padding-left: 5mm; font-size: 9.4pt; color: rgba(255,255,255,.9); }
+.fim li { padding: .8mm 0; }
+</style>
+</head>
+<body>
+
+<section class="capa">
+  <img class="logo" src="../assets/logo/nine-logo-branco.png" alt="Nine Academia de Influência">
+  <div>
+    <h1>O site está <em>pronto</em>. Como vocês querem seguir?</h1>
+    <p class="sub">Três formas de continuar, da entrega do código ao painel para a equipe editar tudo, e como fica a hospedagem.</p>
+  </div>
+  <div class="capa__base meta">
+    <div><b>Para</b>Nine Academia de Influência</div>
+    <div><b>De</b>Boop</div>
+    <div><b>Data</b>13/11/2026</div>
+  </div>
+  <div class="capa__foto" aria-hidden="true"></div>
+</section>
+
+<section class="sec pg">
+  <p class="label">1 · O que está pronto</p>
+  <h2>Um site completo, rápido e acessível.</h2>
+  <div class="pronto">
+    <img src="img/site-desktop.jpg" alt="Página principal do site da formação Nine">
+    <ul class="checks">
+      <li><b>Cinco páginas no ar:</b> a formação, Cursos, IA para Empresários, Legacy e Pré-inscrição.</li>
+      <li><b>Conteúdo real</b> do Manual do Aluno e da Apresentação 2026: pilares, grade, intensivos, o ano mês a mês e a semana.</li>
+      <li><b>Pré-inscrição</b> com o formulário da Ummense, ligado ao fluxo comercial da Abba.</li>
+      <li><b>Cursos com status</b> (pré-inscrição aberta, vagas esgotadas, para ex-alunos).</li>
+      <li><b>Celular pensado à parte:</b> abas, calendário e semana próprios para a tela pequena.</li>
+      <li><b>Nota 99 a 100</b> no Google PageSpeed em desempenho, acessibilidade, boas práticas e SEO.</li>
+      <li><b>Acessível</b> (padrão WCAG AA), com as cores oficiais do manual de marca.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec pg">
+  <p class="label">2 · Como seguir</p>
+  <h2>Três formas de continuar.</h2>
+  <p class="lead">Em todas, o site e o código são de vocês. A diferença está em quem faz as alterações depois.</p>
+  <div class="planos">
+    <div class="plano">
+      <span class="tag">Entrega</span>
+      <h3>Site entregue</h3>
+      <p class="desc">Enviamos o código completo e as instruções. Vocês publicam na hospedagem que preferirem.</p>
+      <div class="preco"><b>R$ 299<small> /mês</small></b><span>A mensalidade atual não muda.</span></div>
+      <ul>
+        <li>Código completo e manual de publicação</li>
+        <li>Ajuda na publicação e no domínio</li>
+        <li class="nao">Alterações na página</li>
+        <li class="nao">Painel para a equipe editar</li>
+      </ul>
+    </div>
+    <div class="plano">
+      <span class="tag">Entrega + ajustes</span>
+      <h3>Site + manutenção Boop</h3>
+      <p class="desc">A mesma entrega, e a Boop cuida dos ajustes técnicos e das alterações sempre que vocês pedirem.</p>
+      <div class="preco"><b>+ R$ 110<small> /mês</small></b><span>Somados à mensalidade atual.</span></div>
+      <ul>
+        <li>Tudo da entrega</li>
+        <li>Ajustes técnicos e atualizações</li>
+        <li>Alterações de texto, fotos e links pela Boop</li>
+        <li class="nao">Painel para a equipe editar</li>
+      </ul>
+    </div>
+    <div class="plano plano--top">
+      <span class="tag">Plano completo</span>
+      <h3>Vocês editam tudo</h3>
+      <p class="desc">Um painel como o do WordPress: a equipe da Nine cria páginas e seções e altera textos, fotos e links sozinha.</p>
+      <div class="preco"><b>R$ 499<small> /mês</small></b><span>No lugar dos R$ 299 atuais.</span></div>
+      <ul>
+        <li>Tudo da manutenção Boop</li>
+        <li>Painel de edição, com rascunho e prévia</li>
+        <li>Páginas e seções novas sem programar</li>
+        <li>Link na bio da Nine incluído</li>
+      </ul>
+    </div>
+  </div>
+  <p class="nota">Valores mensais da Boop. A hospedagem (página seguinte) é contratada no nome da Nine e paga diretamente ao provedor.</p>
+
+  <p class="label label--espaco">Qual escolher</p>
+  <div class="escolha">
+    <div><b>Site entregue</b><p>Se o site vai mudar pouco e vocês já têm quem cuide de código.</p></div>
+    <div><b>Site + manutenção Boop</b><p>Se vocês preferem mandar o pedido e receber a alteração pronta, sem mexer em nada.</p></div>
+    <div><b>Plano completo</b><p>Se a equipe quer autonomia para criar páginas de cursos e eventos no próprio ritmo, e ter o link na bio no mesmo padrão.</p></div>
+  </div>
+</section>
+
+<section class="sec pg">
+  <p class="label">3 · Hospedagem</p>
+  <h2>Nossa recomendação: Vercel.</h2>
+  <p class="lead">É onde o site já roda hoje para revisão. A conta fica no nome da Nine, e a Boop passa o projeto pronto com um link de transferência, sem recriar nada.</p>
+  <div class="reco">
+    <div class="box box--navy">
+      <p class="label">Por que a Vercel</p>
+      <h3>Rápida, segura e sem servidor para cuidar.</h3>
+      <ul>
+        <li>Servidores no mundo todo, inclusive no Brasil: o site abre rápido em qualquer lugar.</li>
+        <li>HTTPS (cadeado) automático e renovado sozinho.</li>
+        <li>Cada alteração publicada vira uma versão; voltar para a anterior leva um clique.</li>
+        <li>Sem máquina para atualizar nem sistema para manter.</li>
+        <li>Transferência do projeto entre contas por link, com configurações e histórico.</li>
+      </ul>
+      <div class="custo"><b>US$ 20 por mês</b>Plano Pro, por pessoa que publica (quem só visualiza não paga). O plano gratuito da Vercel é só para uso pessoal, então o Pro é o certo para a Nine.</div>
+    </div>
+    <div class="box">
+      <p class="label">No plano completo</p>
+      <h3>Somam-se o banco e as imagens.</h3>
+      <p>O painel de edição guarda o conteúdo num banco de dados e as fotos num armazenamento próprio, os dois ligados à mesma conta da Vercel.</p>
+      <ul>
+        <li>Banco de dados: Neon ou Supabase, os dois com plano gratuito para começar.</li>
+        <li>Fotos: armazenamento da própria Vercel.</li>
+        <li>Backup diário automático do conteúdo e das fotos.</li>
+      </ul>
+      <p>Prefere hospedar em outro lugar? O site também roda em outras hospedagens, e o plano completo pode ir para um servidor próprio com um comando. A Vercel é a opção mais simples e segura.</p>
+    </div>
+  </div>
+  <p class="label label--espaco">Como funciona a transferência</p>
+  <ol class="passos">
+    <li><b>Conta da Nine</b><span>Vocês criam a conta na Vercel com o e-mail da Nine e assinam o Pro.</span></li>
+    <li><b>Projeto pronto</b><span>A Boop deixa tudo configurado e testado do nosso lado.</span></li>
+    <li><b>Link de transferência</b><span>Enviamos o link; vocês aceitam em até 24 horas.</span></li>
+    <li><b>Domínio</b><span>Apontamos o 9ai.com.br para o novo site, com o passo a passo da Vercel.</span></li>
+    <li><b>No ar</b><span>O site passa a ser da Nine. A Boop segue como convidada, se houver plano.</span></li>
+  </ol>
+</section>
+
+<section class="sec pg">
+  <p class="label">4 · O plano completo por dentro</p>
+  <h2>A equipe edita, o design continua o mesmo.</h2>
+  <p class="lead">Cada seção que o site já tem vira um bloco reutilizável. Para criar uma página, a equipe empilha blocos e preenche os textos e as fotos; o visual, as animações e o desempenho continuam os de hoje.</p>
+  <div class="editam">
+    <div><h3>Páginas e seções</h3><p>Criar páginas, adicionar, reordenar, duplicar e esconder seções: hero, números, pilares, FAQ, cursos, depoimentos, chamadas.</p></div>
+    <div><h3>Menu, rodapé e links</h3><p>Editar os itens do menu, os links do rodapé e a faixa azul do topo, inclusive ligar e desligar.</p></div>
+    <div><h3>Cursos</h3><p>Criar cursos e trocar o status (aberto, esgotado, para ex-alunos). A área de Cursos se atualiza sozinha.</p></div>
+    <div><h3>Rascunho e prévia</h3><p>Ver como fica antes de publicar. O que está no ar só muda quando alguém clica em publicar.</p></div>
+    <div><h3>Histórico</h3><p>Cada publicação fica guardada. Errou? Volta para a versão anterior.</p></div>
+    <div><h3>Sem quebrar a identidade</h3><p>Cores, fontes e espaçamentos travados na marca da Nine. O contraste e a nota no PageSpeed se mantêm.</p></div>
+  </div>
+  <p class="nota">Por trás, usamos o Payload CMS: código aberto, sem licença mensal, mantido pela Boop. Perfis de acesso: administrador (tudo) e editor (conteúdo).</p>
+  <div class="tempo">
+    <div><b>Dias 1 a 3</b><span>Painel, perfis, menu, rodapé e páginas</span></div>
+    <div><b>Dias 4 a 9</b><span>Seções da Nine como blocos editáveis</span></div>
+    <div><b>Dia 10</b><span>Conteúdo atual importado</span></div>
+    <div><b>Dias 11 e 12</b><span>Testes e uma rodada com a equipe</span></div>
+    <div><b>Cerca de 2 semanas</b><span>Publicado e com treinamento</span></div>
+  </div>
+</section>
+
+<section class="sec pg">
+  <p class="label">5 · Link na bio (no plano completo)</p>
+  <h2>Um link na bio à altura da Nine.</h2>
+  <p class="lead">No lugar do Linktree, uma página com a identidade da Nine, no próprio domínio, que apresenta a formação antes do primeiro clique.</p>
+  <div class="bio">
+    <img src="img/bio-celular-1.jpg" alt="Link na bio da Nine no celular: foto do Romulo e o nome da Nine">
+    <img src="img/bio-celular-2.jpg" alt="Link na bio: seletor Quero entrar, pré-inscrição e arte da Nine">
+    <img src="img/bio-celular-3.jpg" alt="Link na bio: aba Já fui aluno com o Legacy">
+  </div>
+  <div class="feitos">
+    <ul class="checks">
+      <li><b>Quero entrar:</b> pré-inscrição, a formação, os cursos e o status de cada um.</li>
+      <li><b>Já fui aluno:</b> o Legacy, com os benefícios e o botão para entrar.</li>
+      <li><b>Endereço próprio:</b> 9ai.com.br/links, no lugar de linktr.ee.</li>
+    </ul>
+    <ul class="checks">
+      <li><b>Abre instantâneo:</b> nota 100 no PageSpeed, no celular e no computador.</li>
+      <li><b>Botão de compartilhar</b> e acessível para leitores de tela.</li>
+      <li><b>Editável pelo painel</b> no plano completo: links, textos e foto.</li>
+    </ul>
+  </div>
+  <div class="fim">
+    <p class="label">Próximos passos</p>
+    <h3>Para colocar no ar.</h3>
+    <ol>
+      <li>Escolher a forma de seguir: entrega, entrega com manutenção ou plano completo.</li>
+      <li>Criar a conta da Nine na Vercel (plano Pro) e nos avisar.</li>
+      <li>Confirmar o domínio (9ai.com.br) e quem tem acesso ao DNS.</li>
+      <li>No plano completo: enviar os nomes e e-mails de quem vai editar.</li>
+    </ol>
+  </div>
+</section>
+
+</body>
+</html>
