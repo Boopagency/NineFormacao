@@ -57,7 +57,8 @@ Tudo vem do **Manual do Aluno (versão 1.2, 2026)** e da **Apresentação Nine 2
 
 ## Identidade
 - Cores oficiais do manual de marca (2024): azul `#2A2D54` e amarelo `#F4B431` (tokens `--navy` e `--gold`; `--navy-90` `#353862` é o degrau mais claro), coroa, fundo `#FAFAF7`. Fonte oficial: Gilroy (Light e ExtraBold); o site usa Inter Tight (local) porque a Gilroy exige licença.
-- Cor por pilar, sempre a mesma na página inteira: 01 verde, 02 coral, 03 violeta. Aparece nas colagens, na grade, no calendário do ano e na semana.
+- Cor por pilar: 01 verde, 02 coral, 03 violeta. Aparece no traço das abas da grade, no calendário do ano e na semana.
+- **Colagens dos pilares nas cores da Nine** (pedido da Nine, nov/2026): a retícula virou duotom azul Nine sobre o papel, as pinceladas quentes viraram dourado, as verdes um azul Nine claro e as azuis/lilases o azul Nine. Os originais coloridos estão no histórico do git (antes do commit "Colagens nas cores da Nine"). As pinceladas desenhadas em volta do arco (`.brush`) são douradas.
 - 80% calmo (branco, navy, respiro), 20% cor nos momentos-chave. Sem estética de igreja genérica.
 - **Barra do curso de IA:** degradê azul profundo → ciano com grão, marca do N com órbita dourada e estrela (tokens `--ia-*`). Texto e destino ficam no bloco `.ia-bar` do `index.html`.
 

@@ -461,7 +461,7 @@ video { background-color: var(--navy); background-size: cover; background-positi
 .arc { aspect-ratio: 3 / 5; border-radius: var(--r-arc); overflow: hidden; background: var(--paper-2); }
 .arc img { width: 100%; height: 100%; object-fit: cover; }
 .brush { position: absolute; inset: 0; overflow: visible; pointer-events: none; }
-.brush path { fill: none; stroke: var(--accent); stroke-width: 12; stroke-linecap: round; stroke-linejoin: round; }
+.brush path { fill: none; stroke: var(--gold); stroke-width: 12; stroke-linecap: round; stroke-linejoin: round; }
 
 @media (max-width: 1199px) {
   .pilar__items { grid-template-columns: 1fr; }
@@ -1400,3 +1400,27 @@ html.no-bar { --bar-h: 0px; }
 .lg-contrib__nota { padding: 22px 0; border-radius: 0; box-shadow: none; border-top: 1px solid rgba(255, 255, 255, .22); border-bottom: 1px solid rgba(255, 255, 255, .22); }
 .lg-fecho__cta { border-radius: 0; }
 @media (max-width: 1023px) { .lg-hero__media img { margin-inline: auto; } }
+
+/* Grade completa: abas em texto com traço na cor do pilar, painel sem caixa, listas recolhidas como linhas com fio */
+.grade__tabs { gap: 0; border-bottom: 1px solid var(--line-strong); }
+.grade__tab { padding: 18px 20px 20px 0; background: none; border: 0; border-radius: 0; overflow: visible; color: var(--ink-muted); transition: color .2s; }
+.grade__tab::before { top: auto; bottom: -1px; left: 0; right: 20px; width: auto; height: 3px; border-radius: 0; transform: scaleX(0); transform-origin: left; transition: transform .35s cubic-bezier(.2, .7, .2, 1); }
+.grade__tab:hover, .grade__tab[aria-selected="true"] { background: none; color: var(--navy); }
+.grade__tab[aria-selected="true"]::before { transform: none; }
+.grade__tab[aria-selected="true"] :is(.grade__n, .grade__count) { color: var(--ink-muted); }
+.grade__panel { margin-top: 0; padding: clamp(28px, 3vw, 44px) 0 0; background: none; border-radius: 0; box-shadow: none; }
+.grade__cta { padding: 24px 0 0; border-radius: 0; background: none; border-top: 1px solid var(--line-strong); }
+@media (max-width: 767px) {
+  .grade__tabs { gap: 0; }
+  .grade__tab { align-items: flex-start; padding: 14px 8px 14px 0; text-align: left; border-radius: 0; }
+  .grade__tab::before { top: auto; bottom: -1px; left: 0; right: 8px; height: 3px; border-radius: 0; }
+  .grade__panel { margin-top: 0; padding: 24px 0 0; border-radius: 0; }
+  .colapsa--lista, .area.colapsa { border: 0; border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); border-radius: 0; background: none; }
+  .colapsa--lista > summary, .area.colapsa > summary { padding-inline: 0; }
+  .colapsa--lista > summary::after, .area.colapsa > summary::after, .colapsa--lista[open] > summary::after, .area.colapsa[open] > summary::after { width: auto; height: auto; border-radius: 0; background: none; color: var(--navy); font-size: 1.5rem; font-weight: 400; line-height: 1; }
+  .colapsa--lista .mods { padding-inline: 0; }
+  .area.colapsa > p { padding-inline: 0; }
+}
+/* Pilares: os três itens como colunas com fio, sem cartão (a colagem ao lado já é o momento de cor) */
+.pilar__items { gap: 24px; }
+.pilar__items li, .pilares.is-pinned .pilar__items li { padding: 16px 0 0; background: none; border-radius: 0; border-top: 1px solid var(--line-strong); }
