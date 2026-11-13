@@ -64,7 +64,7 @@ h1 { margin-top: 14px; font-size: clamp(2.5rem, 11vw, 3.5rem); }
 .numeros b { display: block; font-size: 1.75rem; font-weight: 600; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
 .numeros span { display: block; margin-top: 6px; font-size: .8125rem; line-height: 1.3; color: var(--texto-2); }
 
-/* Quero entrar / Já fui aluno: duas palavras e um traço dourado embaixo da escolhida */
+/* Quero entrar / Legacy: duas palavras e um traço dourado embaixo da escolhida */
 .seletor { display: none; margin-top: 36px; border-bottom: 1px solid var(--linha); }
 .js .seletor { display: grid; grid-template-columns: 1fr 1fr; }
 .seletor button { position: relative; min-height: 52px; padding: 0; border: 0; background: none; color: var(--texto-2); font: inherit; font-size: 1.0625rem; font-weight: 600; text-align: left; cursor: pointer; transition: color .2s; }
@@ -174,7 +174,7 @@ h2 { font-size: 2rem; letter-spacing: -0.03em; line-height: 1.05; }
 
     <div class="seletor entra" role="tablist" aria-label="Escolha o seu caminho">
       <button type="button" role="tab" id="aba-entrar" aria-controls="painel-entrar" aria-selected="true">Quero entrar</button>
-      <button type="button" role="tab" id="aba-aluno" aria-controls="painel-aluno" aria-selected="false" tabindex="-1">Já fui aluno</button>
+      <button type="button" role="tab" id="aba-aluno" aria-controls="painel-aluno" aria-selected="false" tabindex="-1">Legacy</button>
     </div>
 
     <section class="painel entra" id="painel-entrar" role="tabpanel" aria-labelledby="aba-entrar">
@@ -222,7 +222,7 @@ h2 { font-size: 2rem; letter-spacing: -0.03em; line-height: 1.05; }
   document.documentElement.classList.add("js");
   document.querySelectorAll("[data-ano]").forEach((el) => (el.textContent = new Date().getFullYear()));
 
-  // Quero entrar / Já fui aluno (abas acessíveis; sem JavaScript as duas partes ficam visíveis)
+  // Quero entrar / Legacy (abas acessíveis; sem JavaScript as duas partes ficam visíveis)
   const abas = [...document.querySelectorAll('[role="tab"]')];
   const paineis = abas.map((a) => document.getElementById(a.getAttribute("aria-controls")));
   const ativar = (i, foco) => {
@@ -235,7 +235,7 @@ h2 { font-size: 2rem; letter-spacing: -0.03em; line-height: 1.05; }
       if (e.key === "ArrowRight" || e.key === "ArrowLeft") { e.preventDefault(); ativar((i + (e.key === "ArrowRight" ? 1 : -1) + abas.length) % abas.length, true); }
     });
   });
-  ativar(location.hash === "#ex-alunos" ? 1 : 0);
+  ativar(["#ex-alunos", "#legacy"].includes(location.hash) ? 1 : 0);
 
   // Compartilhar: menu do celular quando existe; senão, copia o endereço
   const aviso = document.querySelector("[data-aviso]");
