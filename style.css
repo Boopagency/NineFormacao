@@ -1341,3 +1341,62 @@ html.no-bar { --bar-h: 0px; }
   .so-desktop { display: none; }
 }
 @media (max-width: 599px) { .semana.is-days .day > h3 b { font-size: 1.25rem; } }
+
+/* ==========================================================================
+   Pontos apontados pela Nine como "cara de IA" (nov/2026): o ano e a semana no celular e os cards de /cursos/.
+   Mesma linguagem do link na bio: sem caixas arredondadas, pílulas ou sombra; fio fino, texto e um traço na escolha.
+   ========================================================================== */
+@media (max-width: 1023px) {
+  .ano__months { gap: 0; border-bottom: 1px solid rgba(255, 255, 255, .22); }
+  .ano__months button { position: relative; border-radius: 0; background: none; color: var(--on-navy); min-height: 48px; transition: color .2s; }
+  .ano__months button::after { content: ""; position: absolute; left: 4px; right: 4px; bottom: -1px; height: 3px; background: var(--gold); transform: scaleX(0); transition: transform .3s cubic-bezier(.2, .7, .2, 1); }
+  .ano__months button[aria-pressed="true"] { background: none; color: var(--gold); }
+  .ano__months button[aria-pressed="true"]::after { transform: none; }
+  .ano__panel { gap: 28px; }
+  .ano.is-live .mes, .ano.is-live .mes.is-on { padding: 22px 0 8px; border-radius: 0; background: none; box-shadow: none; border-top: 1px solid rgba(255, 255, 255, .28); opacity: .5; transition: opacity .3s, border-color .3s; }
+  .ano.is-live .mes.is-on { box-shadow: none; border-top: 3px solid var(--gold); opacity: 1; }
+}
+
+.chips[data-cursos-filtro] { gap: 28px; border-bottom: 1px solid var(--line-strong); }
+.chips[data-cursos-filtro] .chip { position: relative; min-height: 48px; padding: 0; border: 0; border-radius: 0; background: none; color: var(--ink-muted); font-weight: 600; }
+.chips[data-cursos-filtro] .chip::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: var(--navy); transform: scaleX(0); transform-origin: left; transition: transform .3s cubic-bezier(.2, .7, .2, 1); }
+.chips[data-cursos-filtro] .chip:hover, .chips[data-cursos-filtro] .chip[aria-pressed="true"] { background: none; color: var(--navy); }
+.chips[data-cursos-filtro] .chip[aria-pressed="true"]::after { transform: none; }
+.cursos__grid { column-gap: 28px; row-gap: 56px; }
+.curso { overflow: visible; border-radius: 0; background: none; box-shadow: none; }
+.curso__img .tag { top: 0; left: 0; border-radius: 0; box-shadow: none; padding: 9px 12px; }
+.curso__body { padding: 22px 0 0; border-top: 3px solid var(--navy); }
+.curso__meta { gap: 0; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--line-strong); }
+.curso__meta li { padding: 0; border-radius: 0; background: none; font-size: .9375rem; color: var(--ink-muted); }
+.curso__meta li + li::before { content: "·"; margin: 0 8px; color: var(--ink-muted); }
+
+.semana__sum { gap: 0 28px; }
+.semana__sum li, .section--tint .semana__sum li { padding: 18px 0; border-radius: 0; background: none; border-top: 1px solid var(--line-strong); }
+@media (max-width: 1099px) {
+  .day-tabs { gap: 0; border-bottom: 1px solid var(--line-strong); }
+  .day-tab { min-height: 48px; border: 0; border-radius: 0; background: none; color: var(--ink-muted); }
+  .day-tab::before { content: ""; position: absolute; left: 4px; right: 4px; bottom: -1px; height: 3px; background: var(--navy); transform: scaleX(0); transition: transform .3s cubic-bezier(.2, .7, .2, 1); }
+  .day-tab[aria-pressed="true"] { background: none; color: var(--navy); }
+  .day-tab[aria-pressed="true"]::before { transform: none; }
+  .day-tab.is-today::after, .day-tab.is-today[aria-pressed="false"]::after { bottom: 8px; background: var(--gold); }
+  .day { padding: 0; border-radius: 0; background: none; box-shadow: none; }
+  .semana.is-days .day.is-on { padding: 6px 0 0; }
+  .day ul { gap: 0; }
+  .semana.is-days .ev, .ev { padding: 14px 0 14px 14px; border-radius: 0; background: none; border-left: 3px solid var(--accent, var(--ink-muted)); border-bottom: 1px solid var(--line-strong); }
+  .ev--culto { box-shadow: none; border-left-color: var(--line-strong); }
+}
+
+/* Legacy (/legacy/): mesma linguagem editorial. Sem caixas arredondadas, brilho ou pílulas; fios, números e cor chapada. */
+.lg-hero { background: #0E1438; }
+.lg-hero .tag { padding: 0; border-radius: 0; background: none; color: var(--gold); letter-spacing: .12em; }
+.lg-hero .tag i { display: none; }
+.lg-hero__media img { filter: none; }
+.lg-quote { margin-top: 20px; padding: 22px 0; border-radius: 0; background: none; color: var(--navy); border-top: 3px solid var(--navy); border-bottom: 1px solid var(--line-strong); }
+.lg-quote .crown { width: 40px; }
+.lgb__grid { gap: 40px 32px; }
+.lgb { gap: 8px; padding: 20px 0 0; border-radius: 0; background: none; box-shadow: none; border-top: 1px solid var(--line-strong); }
+.lgb__n { font-size: 1rem; color: var(--navy); font-variant-numeric: tabular-nums; }
+.lg-preco { padding: 26px 0 0; border-radius: 0; background: none; box-shadow: none; border-top: 3px solid var(--gold); }
+.lg-contrib__nota { padding: 22px 0; border-radius: 0; box-shadow: none; border-top: 1px solid rgba(255, 255, 255, .22); border-bottom: 1px solid rgba(255, 255, 255, .22); }
+.lg-fecho__cta { border-radius: 0; }
+@media (max-width: 1023px) { .lg-hero__media img { margin-inline: auto; } }
