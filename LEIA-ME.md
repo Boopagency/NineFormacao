@@ -44,6 +44,16 @@ As respostas chegam direto na conta da Ummense da Nine.
 - `main.min.js`, `pagina.min.js` e `formulario.min.js`: o comportamento das páginas (gerados a partir de `main.js`, `pagina.js` e `formulario.js`). O `formulario.js` faz os botões "Quero conhecer" e "Quero ser Legacy" abrirem o formulário da Ummense numa janela, já carregado.
 - `style.css` e `build.py`: fonte do visual. O CSS já vai embutido em cada página; só é preciso rodar `python3 build.py` depois de editar `style.css`, `main.js`, `pagina.js` ou `formulario.js`.
 
+## Google e assistentes de IA
+
+O site já vem preparado para o endereço **https://9ai.com.br**: cada página informa seu endereço oficial (canonical) e a imagem que aparece ao compartilhar no WhatsApp e nas redes, e há dados estruturados para o Google (curso, perguntas frequentes, cursos, Legacy). Na raiz ficam:
+
+- `sitemap.xml`: a lista de páginas para o Google. Depois de publicar, envie `https://9ai.com.br/sitemap.xml` no Google Search Console.
+- `robots.txt`: libera o site para buscadores e para assistentes de IA (ChatGPT, Claude, Perplexity, Gemini).
+- `llms.txt`: um resumo da Nine em texto simples, que assistentes de IA usam para responder sobre a formação.
+
+**Se o site for publicado em outro endereço**, troque `https://9ai.com.br` pelo endereço novo em todos os arquivos (a função "substituir em todos os arquivos" de qualquer editor resolve). Sem isso, a imagem de compartilhamento e o Google apontam para o endereço errado.
+
 ## Ao trocar o domínio
 
 Altere só os registros do **site** (A ou CNAME) no DNS. **Não mexa nos registros MX**, que são os do e-mail (`contato@9ai.com.br`, `secretaria@9ai.com.br`).
