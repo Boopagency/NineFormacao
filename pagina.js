@@ -53,17 +53,3 @@ if (menu && burger) {
   addEventListener("keydown", (e) => e.key === "Escape" && !menu.hidden && setMenu(false));
 }
 
-// Formulário da Ummense (terceiro): carrega na primeira interação (ou em 6 s). Quem chega à página para preencher já está
-// mexendo na tela, então na prática abre na hora; a visita só de passagem não paga pelos scripts e cookies do terceiro.
-const frame = document.querySelector("iframe[data-src]");
-if (frame) {
-  let aberto = false;
-  const abrir = () => {
-    if (aberto) return;
-    aberto = true;
-    ["pointermove", "pointerdown", "touchstart", "keydown", "scroll", "focusin"].forEach((t) => removeEventListener(t, abrir));
-    frame.src = frame.dataset.src;
-  };
-  ["pointermove", "pointerdown", "touchstart", "keydown", "scroll", "focusin"].forEach((t) => addEventListener(t, abrir, { passive: true }));
-  setTimeout(abrir, 6000);
-}
